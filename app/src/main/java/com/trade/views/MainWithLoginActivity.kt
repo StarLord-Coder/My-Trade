@@ -6,29 +6,30 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.trade.R
 
-class AccountOverviewActivity : AppCompatActivity() {
+class MainWithLoginActivity : AppCompatActivity() {
 
-    private var btnTransaction: Button? = null
+    private var btnMe: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_account_overview)
+        setContentView(R.layout.activity_main_with_login)
         initialComponent()
         initialEvent()
     }
 
     private fun initialComponent() {
-        btnTransaction = findViewById(R.id.btnTransaction)
+        btnMe = findViewById(R.id.btnMe)
     }
 
     private fun initialEvent() {
-        btnTransaction?.setOnClickListener {
-            toAccountTransaction()
+        btnMe?.setOnClickListener {
+            toMe()
         }
     }
 
-    private fun toAccountTransaction() {
-        val intent = Intent(this@AccountOverviewActivity, AccountDetailActivity::class.java)
+    private fun toMe() {
+        val intent = Intent(this@MainWithLoginActivity, MeActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }
