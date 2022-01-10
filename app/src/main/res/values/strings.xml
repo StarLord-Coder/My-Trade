@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">中国银行</string>
+
+    <string-array name="country_code">
+        <item>+86</item>
+        <item>+87</item>
+        <item>+88</item>
+        <item>+89</item>
+    </string-array>
 </resources>

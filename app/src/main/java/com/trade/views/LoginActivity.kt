@@ -30,7 +30,8 @@ class LoginActivity : AppCompatActivity() {
     private fun toMainWithLogin() {
         val intent = Intent(this@LoginActivity, MainWithLoginActivity::class.java)
         startActivity(intent)
-        finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+//        finishAffinity()
     }
 
     override fun onBackPressed() {

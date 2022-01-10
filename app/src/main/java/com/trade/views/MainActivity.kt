@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     private fun toLoginScreen() {
         val intent = Intent(this@MainActivity, LoginActivity::class.java)
         startActivity(intent)
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
 //        finish()
     }
 

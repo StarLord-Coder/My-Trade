@@ -30,5 +30,11 @@ class AccountOverviewActivity : AppCompatActivity() {
     private fun toAccountTransaction() {
         val intent = Intent(this@AccountOverviewActivity, AccountDetailActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left)
     }
 }
