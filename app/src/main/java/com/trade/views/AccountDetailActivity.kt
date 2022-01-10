@@ -8,7 +8,11 @@ import android.widget.Button
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.trade.R
+import com.trade.adapter.TransactionAdapter
+import com.trade.utils.ReadData
 import java.util.*
 
 class AccountDetailActivity : AppCompatActivity() {
@@ -20,6 +24,7 @@ class AccountDetailActivity : AppCompatActivity() {
     private var btnCancel: TextView? = null
     private var btnConfirm: Button? = null
     private var filterView: RelativeLayout? = null
+    private var rvTransaction: RecyclerView? = null
 
     private var startDate: String? = ""
     private var endDate: String? = ""
@@ -29,11 +34,14 @@ class AccountDetailActivity : AppCompatActivity() {
     val month = c.get(Calendar.MONTH)
     val day = c.get(Calendar.DAY_OF_MONTH)
 
+    var transactionAdapter: TransactionAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_detail)
         initialComponent()
         initialEvent()
+        initialTransactionData()
     }
 
     private fun initialComponent() {
@@ -44,6 +52,7 @@ class AccountDetailActivity : AppCompatActivity() {
         btnCancel = findViewById(R.id.btnCancel)
         btnConfirm = findViewById(R.id.btnConfirm)
         filterView = findViewById(R.id.filterView)
+        rvTransaction = findViewById(R.id.rvTransaction)
     }
 
     private fun initialEvent() {
@@ -72,6 +81,16 @@ class AccountDetailActivity : AppCompatActivity() {
         }
     }
 
+    private fun initialTransactionData() {
+        val transactionList = ReadData().readJson(this)
+
+        rvTransaction?.layoutManager = LinearLayoutManager(this)
+        transactionAdapter = TransactionAdapter(this, transactionList) { position, transaction ->
+
+        }
+        rvTransaction?.adapter = transactionAdapter
+    }
+
     private fun openStartDatePicker() {
         val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
             val sDate = "$dayOfMonth/$month/$year"
@@ -91,6 +110,7 @@ class AccountDetailActivity : AppCompatActivity() {
     private fun resetFilter() {
         tvEndDate?.text = ""
         tvStartDate?.text = ""
+        filterView?.visibility = View.GONE
     }
 
     private fun confirmFilter() {

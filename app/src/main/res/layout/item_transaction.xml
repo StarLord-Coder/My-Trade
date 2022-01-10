@@ -5,18 +5,36 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.4dp"
+        android:background="#d8d8e0"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="26dp"
-        android:background="@android:color/darker_gray">
+        android:layout_height="30dp"
+        android:background="#f9f9f9">
+
+        <TextView
+            android:id="@+id/tvMonthYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Month/Year"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginStart="14dp"/>
 
     </RelativeLayout>
 
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal">
+        android:layout_height="1.4dp"
+        android:background="#d8d8e0"/>
 
-    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTransactionDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

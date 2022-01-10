@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.StrictMode
 import androidx.appcompat.app.AppCompatActivity
 import com.trade.R
+import com.trade.utils.ReadData
 
 class SplashActivity : AppCompatActivity() {
 
