@@ -7,4 +7,6 @@
         <item>+88</item>
         <item>+89</item>
     </string-array>
+
+    <string name="remark">"交易时间"为该笔交易的提交时间 ; "记账时间"为后台系统对该笔交易的实际处理时间。</string>
 </resources>

@@ -2,7 +2,7 @@ package com.trade.utils
 
 data class Transaction(
     val month: String,
-    val tx_in_month: ArrayList<TransactionItem>?
+    val tx_in_month: ArrayList<ExchangeModel>?
 )
 
 data class TransactionItem(

@@ -10,4 +10,10 @@
 
     <color name="color_debit">#018665</color>
     <color name="color_credit">#df2d47</color>
+
+    <color name="color_red_filter">#df2d48</color>
+    <color name="color_line_filter">#d8d8e0</color>
+    <color name="color_dash_filter">#222222</color>
+
+    <color name="color_dark_font_filter">#686868</color>
 </resources>
