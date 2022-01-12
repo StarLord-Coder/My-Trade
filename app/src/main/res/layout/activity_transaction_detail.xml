@@ -30,6 +30,7 @@
             android:background="@color/white">
 
             <TextView
+                android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="收入金额 (人民币元)"

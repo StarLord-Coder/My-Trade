@@ -30,7 +30,7 @@
             android:name="com.trade.views.LoginActivity"
             android:theme="@style/NoActionBar"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateVisible"/>
+            android:windowSoftInputMode="stateVisible"/>
 
         <activity
             android:name="com.trade.views.MeActivity"

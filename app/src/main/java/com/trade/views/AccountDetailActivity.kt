@@ -215,6 +215,7 @@ class AccountDetailActivity : AppCompatActivity() {
         intent.putExtra("acct_balance", exchangeModel.acct_balance)
         intent.putExtra("channel", exchangeModel.channel)
         intent.putExtra("remarks", exchangeModel.remarks)
+        intent.putExtra("tx_type", exchangeModel.tx_type)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }

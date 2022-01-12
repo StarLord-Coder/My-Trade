@@ -11,6 +11,7 @@ import java.text.DecimalFormat
 class TransactionDetailActivity : AppCompatActivity() {
 
     private var tvAmount: TextView? = null
+    private var tvTitle: TextView? = null
     private var tvCounterPattyAccountName: TextView? = null
     private var tvTime: TextView? = null
     private var tvRecordTime: TextView? = null
@@ -46,6 +47,11 @@ class TransactionDetailActivity : AppCompatActivity() {
             tvRemark?.text = intent.getStringExtra("remarks").toString()
         }
 
+        if (intent.getStringExtra("tx_type") != "credit") {
+            tvTitle?.text = "收入金额 (人民币元)"
+        } else {
+            tvTitle?.text = "支出金额 (人民币元)"
+        }
     }
 
     private fun initialComponent() {
@@ -57,6 +63,7 @@ class TransactionDetailActivity : AppCompatActivity() {
         tvCurrencyAccBalance = findViewById(R.id.tvCurrencyAccBalance)
         tvChannel = findViewById(R.id.tvChannel)
         tvRemark = findViewById(R.id.tvRemark)
+        tvTitle = findViewById(R.id.tvTitle)
 
         ll4 = findViewById(R.id.ll4)
         ll5 = findViewById(R.id.ll5)
