@@ -7,6 +7,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.trade.R
 
@@ -15,6 +16,7 @@ class LoginActivity : AppCompatActivity() {
     private var btnLogin: Button? = null
     private var edtPhone: EditText? = null
     private var edtPassword: EditText? = null
+    private var btnBack: ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
         btnLogin = findViewById(R.id.btnLogin)
         edtPhone = findViewById(R.id.edtPhone)
         edtPassword = findViewById(R.id.edtPassword)
+        btnBack = findViewById(R.id.btnBack)
     }
 
     private fun initialEvent() {
@@ -37,6 +40,11 @@ class LoginActivity : AppCompatActivity() {
             edtPassword?.clearFocus()
             hideSoftKeyboard()
             toMainWithLogin()
+        }
+
+        btnBack?.setOnClickListener {
+            finish()
+            overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right)
         }
     }
 
@@ -57,12 +65,12 @@ class LoginActivity : AppCompatActivity() {
     private fun toMainWithLogin() {
         val intent = Intent(this@LoginActivity, MainWithLoginActivity::class.java)
         startActivity(intent)
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
 //        finishAffinity()
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left)
+        overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right)
     }
 }

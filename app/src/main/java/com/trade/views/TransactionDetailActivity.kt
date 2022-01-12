@@ -1,7 +1,9 @@
 package com.trade.views
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +21,10 @@ class TransactionDetailActivity : AppCompatActivity() {
     private var tvCurrencyAccBalance: TextView? = null
     private var tvChannel: TextView? = null
     private var tvRemark: TextView? = null
+    private var btnBack: Button? = null
 
+    private var ll1: LinearLayout? = null
+    private var ll2: LinearLayout? = null
     private var ll4: LinearLayout? = null
     private var ll5: LinearLayout? = null
     private var ll6: LinearLayout? = null
@@ -29,13 +34,21 @@ class TransactionDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaction_detail)
         initialComponent()
+        initialEvent()
+
+        if (intent.getStringExtra("counterparty_acct_no").toString() == "" ) {
+            ll1?.visibility = View.GONE
+        } else {
+            val accNo = hideMiddleCharacter(intent.getStringExtra("counterparty_acct_no").toString())
+            tvCounterPattyAccountName?.text = intent.getStringExtra("counterparty_acct_name").toString() +" "+ accNo
+        }
 
         val amount = String.format("%.2f", intent.getStringExtra("tx_amount")!!.toDouble())
         tvAmount?.text = currencyFormat(amount.toString())
-        val accNo = hideMiddleCharacter(intent.getStringExtra("counterparty_acct_no").toString())
-        tvCounterPattyAccountName?.text = intent.getStringExtra("counterparty_acct_name").toString() +" "+ accNo
-        tvTime?.text = intent.getStringExtra("tx_time").toString()
-        tvRecordTime?.text = intent.getStringExtra("record_time").toString()
+
+        tvTime?.text = intent.getStringExtra("tx_time").toString().replace("-", "/")
+        tvRecordTime?.text = intent.getStringExtra("record_time").toString().replace("-", "/")
+
         tvCat?.text = intent.getStringExtra("tx_cat").toString()
         val accBalance = String.format("%.2f", intent.getStringExtra("acct_balance")!!.toDouble())
         tvCurrencyAccBalance?.text = intent.getStringExtra("currency").toString() +" "+ currencyFormat(accBalance)
@@ -64,11 +77,21 @@ class TransactionDetailActivity : AppCompatActivity() {
         tvChannel = findViewById(R.id.tvChannel)
         tvRemark = findViewById(R.id.tvRemark)
         tvTitle = findViewById(R.id.tvTitle)
+        btnBack = findViewById(R.id.btnBack)
 
+        ll1 = findViewById(R.id.ll1)
+        ll2 = findViewById(R.id.ll2)
         ll4 = findViewById(R.id.ll4)
         ll5 = findViewById(R.id.ll5)
         ll6 = findViewById(R.id.ll6)
         ll7 = findViewById(R.id.ll7)
+    }
+
+    private fun initialEvent() {
+        btnBack?.setOnClickListener {
+            finish()
+            overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left)
+        }
     }
 
     override fun onBackPressed() {
@@ -82,14 +105,16 @@ class TransactionDetailActivity : AppCompatActivity() {
     }
 
     private fun hideMiddleCharacter(word: String): String? {
+        val count = word.length
+        Log.v("word", word)
         val c1 = word[0]
         val c2 = word[1]
         val c3 = word[2]
         val c4 = word[3]
-        val c19 = word[18]
-        val c18 = word[17]
-        val c17 = word[16]
-        val c16 = word[15]
+        val c19 = word[count-1]
+        val c18 = word[count-2]
+        val c17 = word[count-3]
+        val c16 = word[count-4]
         return "$c1$c2$c3$c4 ****** $c16$c17$c18$c19"
     }
 }

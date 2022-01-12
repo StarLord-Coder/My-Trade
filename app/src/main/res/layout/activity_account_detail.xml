@@ -14,11 +14,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/img_header_account_detail"
-            android:adjustViewBounds="true"/>
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_header_account_detail"
+                android:adjustViewBounds="true"/>
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"/>
+        </RelativeLayout>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -34,6 +45,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
+                        android:id="@+id/imgBox1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
@@ -118,7 +130,7 @@
                         android:layout_marginTop="28dp"
                         android:text="交易日期"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="17sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -205,7 +217,7 @@
                         android:layout_marginTop="22dp"
                         android:text="币种"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="17sp" />
 
                     <LinearLayout
                         android:layout_width="100dp"
@@ -246,7 +258,7 @@
                         android:layout_marginTop="22dp"
                         android:text="收支"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="17sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -311,7 +323,7 @@
                         android:layout_marginTop="22dp"
                         android:text="排序"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="17sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -367,7 +379,7 @@
                         android:layout_marginTop="22dp"
                         android:text="金额区间"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="17sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -413,7 +425,7 @@
                         android:layout_marginTop="22dp"
                         android:text="对方账号"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="17sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -437,7 +449,7 @@
                         android:layout_marginTop="22dp"
                         android:text="对方名称"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="17sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -501,6 +513,45 @@
             </LinearLayout>
 
         </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#88000000"
+        android:visibility="gone">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="210dp"
+            android:layout_height="62dp"
+            android:layout_centerInParent="true"
+            app:cardCornerRadius="6dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/mock_loading"/>
+        </androidx.cardview.widget.CardView>
+
+<!--        <com.airbnb.lottie.LottieAnimationView-->
+<!--            android:id="@+id/iconTransfer"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginStart="26dp"-->
+<!--            android:layout_marginEnd="26dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            app:lottie_loop="true"-->
+<!--            app:lottie_autoPlay="true"-->
+<!--            app:lottie_rawRes="@raw/sample_loading" />-->
 
     </RelativeLayout>
 

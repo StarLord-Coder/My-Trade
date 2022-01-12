@@ -5,10 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,9 +27,11 @@ class AccountDetailActivity : AppCompatActivity() {
     private var btnConfirm: Button? = null
     private var filterView: RelativeLayout? = null
     private var rvTransaction: RecyclerView? = null
-
+    private var rlLoading: RelativeLayout? = null
     private var startDate: String? = ""
     private var endDate: String? = ""
+    private var btnBack: Button? = null
+    private var imgBox1: ImageView? = null
 
     val c = Calendar.getInstance()
     var transactionAdapter: TransactionAdapter? = null
@@ -45,6 +44,11 @@ class AccountDetailActivity : AppCompatActivity() {
         initialComponent()
         initialEvent()
 //        initialTransactionData()
+//        rlLoading?.visibility = View.VISIBLE
+//        Handler().postDelayed({
+//            getTransactionData()
+//        }, 2000)
+
         getTransactionData()
     }
 
@@ -57,6 +61,9 @@ class AccountDetailActivity : AppCompatActivity() {
         btnConfirm = findViewById(R.id.btnConfirm)
         filterView = findViewById(R.id.filterView)
         rvTransaction = findViewById(R.id.rvTransaction)
+        rlLoading = findViewById(R.id.rlLoading)
+        btnBack = findViewById(R.id.btnBack)
+        imgBox1 = findViewById(R.id.imgBox1)
     }
 
     private fun initialEvent() {
@@ -83,29 +90,41 @@ class AccountDetailActivity : AppCompatActivity() {
         btnConfirm?.setOnClickListener {
             confirmFilter()
         }
+
+        btnBack?.setOnClickListener {
+            finish()
+            overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left)
+        }
     }
 
     private fun getTransactionData() {
-
         if (startDate.isNullOrEmpty() && endDate.isNullOrEmpty()) {
             val tempEnd = getCurrentDateTime()
             val tempStart = getBefore6month()
+
+            startDate = tempStart
+            endDate = tempEnd
             Log.v("CURRENT END DATE", tempEnd)
             Log.v("CURRENT START DATE", tempStart)
             transactionList = sqLiteHelper.getAllTransactions(tempStart, tempEnd)
             initialTransactionData()
+
+            val arrEnd = endDate!!.split(" ")
+            tvEndDate?.text = arrEnd[0].replace("-", "/")
+
+            val arrStart = startDate!!.split(" ")
+            tvStartDate?.text = arrStart[0].replace("-", "/")
         }
-//        sqLiteHelper.getAllTransactions("", "")
     }
 
     private fun initialTransactionData() {
 //        val transactionList = ReadData().readJson(this)
-
         rvTransaction?.layoutManager = LinearLayoutManager(this)
         transactionAdapter = TransactionAdapter(this, transactionList) { position, exchangeModel ->
             toAccountTransaction(exchangeModel)
         }
         rvTransaction?.adapter = transactionAdapter
+        rlLoading?.visibility = View.GONE
     }
 
     private fun openStartDatePicker() {
@@ -150,9 +169,30 @@ class AccountDetailActivity : AppCompatActivity() {
     }
 
     private fun confirmFilter() {
-        endDate = tvEndDate?.text.toString()
-        startDate = tvStartDate?.text.toString()
-        filterView?.visibility = View.GONE
+        if (!tvEndDate?.text.toString().isNullOrEmpty() && !tvStartDate?.text.toString().isNullOrEmpty()) {
+            endDate = tvEndDate?.text.toString()
+            startDate = tvStartDate?.text.toString()
+
+            endDate = endDate!!.replace("/", "-") + " 23:59:59"
+            startDate = startDate!!.replace("/", "-") + " 00:00:00"
+            filterView?.visibility = View.GONE
+
+            searchData(startDate!!, endDate!!)
+            imgBox1?.setImageDrawable(resources.getDrawable(R.drawable.img_account_detail_box_1_red, null))
+        } else {
+            startDate = ""
+            endDate = ""
+            getTransactionData()
+            imgBox1?.setImageDrawable(resources.getDrawable(R.drawable.img_account_detail_box_1, null))
+            filterView?.visibility = View.GONE
+        }
+    }
+
+    private fun searchData(start: String, end: String) {
+        Log.v("start", start)
+        Log.v("end", end)
+        transactionList = sqLiteHelper.getAllTransactions(start, end)
+        initialTransactionData()
     }
 
 //    private fun openDialogFilter() {

@@ -89,7 +89,7 @@ class SQLiteHelper(context: Context) :
     fun getAllTransactions(dateTimeForm: String, dateTimeTo: String): ArrayList<Transaction> {
 
         val txList: ArrayList<ExchangeModel> = ArrayList()
-        val SQL_QUERY = "SELECT * FROM $TBL_EXCHANGE WHERE tx_time BETWEEN '$dateTimeForm' AND '$dateTimeTo'"
+        val SQL_QUERY = "SELECT * FROM $TBL_EXCHANGE WHERE tx_time BETWEEN '$dateTimeForm' AND '$dateTimeTo' order by tx_time desc"
         val db = this.readableDatabase
 
         val cursor: Cursor?
@@ -162,6 +162,16 @@ class SQLiteHelper(context: Context) :
                 }else{
                     if(tempMont == convertFormat(txTime)){
                         exchangeList.add(tx)
+                        if(cursor.isLast()){
+                            transaction = Transaction(
+                                month = tempMont,
+                                tx_in_month = exchangeList
+                            )
+
+                            exchangeList = ArrayList<ExchangeModel>()
+                            tempMont = convertFormat(txTime)
+                            transactionList.add(transaction)
+                        }
                     }else{
                         transaction = Transaction(
                             month = tempMont,
@@ -172,42 +182,8 @@ class SQLiteHelper(context: Context) :
                         transactionList.add(transaction)
                     }
                 }
+                println("tempMont = "+tempMont)
 
-//                if (tempMont != convertFormat(txTime)) {
-//                    tempMont = convertFormat(txTime)
-//                    exchangeList.add(tx)
-//                } else {
-//                    transaction = Transaction(
-//                        month = tempMont,
-//                        tx_in_month = exchangeList
-//                    )
-//                    transactionList.add(transaction)
-//                    exchangeList = ArrayList<ExchangeModel>()
-//                }
-
-//                if (transactionList.isNullOrEmpty()) {
-//                    exchangeList.add(tx)
-//                } else {
-//                    if (tempMont == convertFormat(txTime)) {
-//                        exchangeList.add(tx)
-//                    } else {
-//                        transaction = Transaction(
-//                            month = tempMont,
-//                            tx_in_month = exchangeList
-//                        )
-//                        transactionList.add(transaction)
-//                    }
-//                }
-//                txList.add(tx)
-//                if (tempMont == convertFormat(txTime)) {
-//                    exchangeList.add(tx)
-//                } else {
-//                    transaction = Transaction(
-//                        month = tempMont,
-//                        tx_in_month = exchangeList
-//                    )
-//                    transactionList.add(transaction)
-//                }
             } while (cursor.moveToNext())
 
         }

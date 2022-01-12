@@ -16,12 +16,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/btnBack"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginStart="14dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_back_arrow"
-            android:adjustViewBounds="true"/>
+            android:layout_marginStart="14dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_back_arrow" />
 
         <RelativeLayout
             android:id="@+id/rlAdd"
@@ -112,7 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            android:text="137****6904"
+            android:text="158****3758"
             android:inputType="phone"/>
 
     </LinearLayout>
