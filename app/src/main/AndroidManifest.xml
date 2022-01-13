@@ -12,6 +12,7 @@
         android:theme="@style/NoActionBar">
         <activity
             android:name=".views.SplashActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

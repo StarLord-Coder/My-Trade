@@ -3,7 +3,9 @@ package com.trade.views
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -46,8 +48,8 @@ class TransactionDetailActivity : AppCompatActivity() {
         val amount = String.format("%.2f", intent.getStringExtra("tx_amount")!!.toDouble())
         tvAmount?.text = currencyFormat(amount.toString())
 
-        tvTime?.text = intent.getStringExtra("tx_time").toString().replace("-", "/")
-        tvRecordTime?.text = intent.getStringExtra("record_time").toString().replace("-", "/")
+        tvTime?.text = intent.getStringExtra("tx_time").toString().replace("-", "/").replace(" ", "  ")
+        tvRecordTime?.text = intent.getStringExtra("record_time").toString().replace("-", "/").replace(" ", "  ")
 
         tvCat?.text = intent.getStringExtra("tx_cat").toString()
         val accBalance = String.format("%.2f", intent.getStringExtra("acct_balance")!!.toDouble())
@@ -61,9 +63,9 @@ class TransactionDetailActivity : AppCompatActivity() {
         }
 
         if (intent.getStringExtra("tx_type") != "credit") {
-            tvTitle?.text = "收入金额 (人民币元)"
+            tvTitle?.text = "收入金额  (人民币元)"
         } else {
-            tvTitle?.text = "支出金额 (人民币元)"
+            tvTitle?.text = "支出金额  (人民币元)"
         }
     }
 

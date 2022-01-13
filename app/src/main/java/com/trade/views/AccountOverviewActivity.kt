@@ -1,22 +1,26 @@
 package com.trade.views
 
+import android.content.Context
 import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.trade.R
+import com.trade.dialog.LoadingDialog
 
 class AccountOverviewActivity : AppCompatActivity() {
 
     private var btnTransaction: Button? = null
     private var rlLoading: RelativeLayout? = null
     private var btnBack: Button? = null
-
+    var activity: Context? = null
+    var loadingDialog: LoadingDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_overview)
+        activity = this@AccountOverviewActivity
         initialComponent()
         initialEvent()
     }
@@ -29,7 +33,14 @@ class AccountOverviewActivity : AppCompatActivity() {
 
     private fun initialEvent() {
         btnTransaction?.setOnClickListener {
+//            runOnUiThread {
+//
+//            }
+            loadingDialog = LoadingDialog(this)
+            loadingDialog!!.setCancelable(false)
+            loadingDialog!!.show()
             toAccountTransaction()
+
         }
 
         btnBack?.setOnClickListener {
@@ -37,6 +48,12 @@ class AccountOverviewActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left)
         }
     }
+
+     fun changeActivity() {
+
+    }
+
+
 
     private fun toAccountTransaction() {
 
@@ -50,4 +67,5 @@ class AccountOverviewActivity : AppCompatActivity() {
         super.onBackPressed()
         overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left)
     }
+
 }

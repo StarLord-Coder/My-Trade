@@ -45,7 +45,7 @@ class TransactionDayAdapter(
         val balance = String.format("%.2f", exchangeModel.acct_balance.toDouble())
         val amount = String.format("%.2f", exchangeModel.tx_amount.toDouble())
 //        val balance = "余额 " + transactionItem.acct_balance.toString()
-        holder.tvBalance.text = "余额 ${currencyFormat(balance)}"
+        holder.tvBalance.text = "余额${currencyFormat(balance)}"
         holder.tvCurrency.text = exchangeModel.currency
 
         if (exchangeModel.tx_type == "credit") {

@@ -4,36 +4,32 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/rlHeader"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#F4F4F4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/imgHeader"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/img_header_account_detail" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/img_header_account_detail"
-                android:adjustViewBounds="true"/>
-
-            <Button
-                android:id="@+id/btnBack"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
-                android:background="@android:color/transparent"/>
-        </RelativeLayout>
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="49dp"
+            android:background="@android:color/transparent" />
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/imgHeader">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,23 +51,37 @@
                         android:id="@+id/btnFilter"
                         android:layout_width="80dp"
                         android:layout_height="40dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
-                        android:background="@android:color/transparent"/>
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@android:color/transparent" />
 
                 </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvTransaction"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
 
-    </LinearLayout>
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        android:background="@color/white"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent">-->
+<!--        -->
+
+<!--    </LinearLayout>-->
 
     <RelativeLayout
         android:id="@+id/filterView"
@@ -93,10 +103,10 @@
             <RelativeLayout
                 android:id="@+id/rlTop"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:layout_alignParentTop="true"
                 android:background="@color/white"
-                android:elevation="3dp">
+                android:elevation="1.2dp">
 
                 <TextView
                     android:id="@+id/btnCancel"
@@ -106,16 +116,24 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="16dp"
                     android:text="取消"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:textSize="16sp" />
+                    android:textColor="#D73149"
+                    android:textSize="13sp" />
 
             </RelativeLayout>
 
+            <View
+                android:id="@+id/lineHeader"
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/color_line_filter"
+                android:layout_below="@+id/rlTop" />
+
             <androidx.core.widget.NestedScrollView
+                android:id="@+id/scroller"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/llBottom"
-                android:layout_below="@+id/rlTop">
+                android:layout_below="@+id/lineHeader"
+                android:layout_above="@+id/llBottom">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -126,11 +144,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="28dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="29dp"
                         android:text="交易日期"
                         android:textColor="@android:color/black"
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -139,37 +157,37 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:layout_width="90dp"
-                            android:layout_height="34dp"
-                            android:layout_marginStart="12dp"
+                            android:layout_width="84dp"
+                            android:layout_height="31dp"
+                            android:layout_marginStart="10dp"
                             android:background="@drawable/bg_btn_gray_white"
                             android:text="近1周"
                             android:textColor="@color/color_dark_font_filter"
-                            android:textSize="15sp" />
+                            android:textSize="13sp" />
 
                         <Button
-                            android:layout_width="80dp"
-                            android:layout_height="34dp"
-                            android:layout_marginStart="14dp"
-                            android:layout_marginEnd="14dp"
+                            android:layout_width="84dp"
+                            android:layout_height="31dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
                             android:background="@drawable/bg_btn_gray_white"
                             android:text="近1月"
                             android:textColor="@color/color_dark_font_filter"
-                            android:textSize="15sp" />
+                            android:textSize="13sp" />
 
                         <Button
-                            android:layout_width="90dp"
-                            android:layout_height="34dp"
+                            android:layout_width="84dp"
+                            android:layout_height="31dp"
                             android:background="@drawable/bg_btn_gray_white"
                             android:text="近3月"
                             android:textColor="@color/color_dark_font_filter"
-                            android:textSize="15sp" />
+                            android:textSize="13sp" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.8dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="13dp"
                         android:background="@color/color_line_filter" />
 
                     <LinearLayout
@@ -191,8 +209,8 @@
                         <View
                             android:layout_width="10dp"
                             android:layout_height="1dp"
-                            android:layout_marginStart="14dp"
-                            android:layout_marginEnd="14dp"
+                            android:layout_marginStart="11dp"
+                            android:layout_marginEnd="12dp"
                             android:background="@color/color_dash_filter" />
 
                         <TextView
@@ -213,24 +231,24 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="22dp"
                         android:text="币种"
                         android:textColor="@android:color/black"
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="32dp"
-                        android:layout_marginStart="12dp"
+                        android:layout_width="84dp"
+                        android:layout_height="31dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="12dp"
                         android:background="@drawable/bg_btn_red_white"
                         android:gravity="center"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_correct"
                             android:tint="@color/color_red_filter" />
@@ -238,17 +256,17 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="6dp"
+                            android:layout_marginStart="3dp"
                             android:text="人民币元"
                             android:textColor="@color/color_red_filter"
-                            android:textSize="15sp" />
+                            android:textSize="13sp" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.8dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="12dp"
                         android:background="@color/color_line_filter" />
 
                     <TextView
@@ -258,25 +276,25 @@
                         android:layout_marginTop="22dp"
                         android:text="收支"
                         android:textColor="@android:color/black"
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="34dp"
+                        android:layout_height="31dp"
                         android:layout_marginTop="12dp"
                         android:orientation="horizontal">
 
                         <LinearLayout
-                            android:layout_width="95dp"
-                            android:layout_height="34dp"
-                            android:layout_marginStart="12dp"
+                            android:layout_width="84dp"
+                            android:layout_height="31dp"
+                            android:layout_marginStart="10dp"
                             android:background="@drawable/bg_btn_red_white"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
+                                android:layout_width="13dp"
+                                android:layout_height="13dp"
                                 android:layout_marginStart="10dp"
                                 android:adjustViewBounds="true"
                                 android:src="@drawable/ic_correct"
@@ -285,63 +303,65 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
+                                android:layout_marginStart="17dp"
                                 android:text="全部"
                                 android:textColor="@color/color_red_filter"
-                                android:textSize="15sp" />
+                                android:textSize="13sp" />
 
                         </LinearLayout>
 
                         <Button
-                            android:layout_width="95dp"
-                            android:layout_height="34dp"
+                            android:layout_width="84dp"
+                            android:layout_height="31dp"
                             android:layout_marginStart="10dp"
                             android:background="@drawable/bg_btn_gray_white"
                             android:text="收入"
-                            android:textSize="15sp" />
+                            android:textSize="13sp"
+                            android:textColor="@color/color_dark_font_filter"/>
 
                         <Button
-                            android:layout_width="95dp"
-                            android:layout_height="34dp"
+                            android:layout_width="84dp"
+                            android:layout_height="31dp"
                             android:layout_marginStart="10dp"
                             android:background="@drawable/bg_btn_gray_white"
                             android:text="支出"
-                            android:textSize="15sp" />
+                            android:textSize="13sp"
+                            android:textColor="@color/color_dark_font_filter"/>
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.8dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="12dp"
                         android:background="@color/color_line_filter" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="22dp"
                         android:text="排序"
                         android:textColor="@android:color/black"
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="34dp"
+                        android:layout_height="31dp"
                         android:layout_marginTop="12dp"
                         android:orientation="horizontal">
 
                         <LinearLayout
-                            android:layout_width="100dp"
-                            android:layout_height="34dp"
-                            android:layout_marginStart="12dp"
+                            android:layout_width="84dp"
+                            android:layout_height="31dp"
+                            android:layout_marginStart="10dp"
                             android:background="@drawable/bg_btn_red_white"
                             android:gravity="center"
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
+                                android:layout_width="13dp"
+                                android:layout_height="13dp"
                                 android:adjustViewBounds="true"
                                 android:src="@drawable/ic_correct"
                                 android:tint="@color/color_red_filter" />
@@ -349,37 +369,38 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="6dp"
+                                android:layout_marginStart="3dp"
                                 android:text="由近及远"
                                 android:textColor="@color/color_red_filter"
-                                android:textSize="16sp" />
+                                android:textSize="13sp" />
 
                         </LinearLayout>
 
                         <Button
-                            android:layout_width="100dp"
-                            android:layout_height="34dp"
-                            android:layout_marginStart="12dp"
+                            android:layout_width="84dp"
+                            android:layout_height="31dp"
+                            android:layout_marginStart="10dp"
                             android:background="@drawable/bg_btn_gray_white"
                             android:text="由远及近"
-                            android:textSize="16sp" />
+                            android:textColor="@color/color_dark_font_filter"
+                            android:textSize="13sp" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.8dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="12dp"
                         android:background="@color/color_line_filter" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="22dp"
                         android:text="金额区间"
                         android:textColor="@android:color/black"
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -391,10 +412,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginStart="10dp"
                             android:text="最低"
                             android:textColor="#D1D1D1"
-                            android:textSize="15sp" />
+                            android:textSize="13sp" />
 
                         <View
                             android:layout_width="10dp"
@@ -408,64 +429,63 @@
                             android:layout_marginStart="12dp"
                             android:text="最高"
                             android:textColor="#D1D1D1"
-                            android:textSize="15sp" />
+                            android:textSize="13sp" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.8dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="12dp"
                         android:background="@color/color_line_filter" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="22dp"
                         android:text="对方账号"
                         android:textColor="@android:color/black"
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="8dp"
                         android:text="选输"
                         android:textColor="#D1D1D1"
-                        android:textSize="15sp" />
+                        android:textSize="13sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.8dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="12dp"
                         android:background="@color/color_line_filter" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="23dp"
                         android:text="对方名称"
                         android:textColor="@android:color/black"
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="8dp"
                         android:text="选输"
                         android:textColor="#D1D1D1"
-                        android:textSize="15sp" />
+                        android:textSize="13sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.8dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="7dp"
                         android:background="@color/color_line_filter" />
-
 
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
@@ -473,7 +493,7 @@
             <LinearLayout
                 android:id="@+id/llBottom"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="49dp"
                 android:layout_alignParentBottom="true"
                 android:orientation="horizontal">
 
@@ -497,7 +517,7 @@
                         android:background="@color/white"
                         android:text="重置"
                         android:textColor="@color/color_red_filter"
-                        android:textSize="18sp" />
+                        android:textSize="15sp" />
 
                 </RelativeLayout>
 
@@ -506,10 +526,10 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/color_red_filter"
+                    android:background="@color/color_red_button_filter"
                     android:text="确认"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+                    android:textSize="15sp" />
             </LinearLayout>
 
         </RelativeLayout>
@@ -528,7 +548,8 @@
             android:layout_height="62dp"
             android:layout_centerInParent="true"
             app:cardCornerRadius="6dp"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -540,6 +561,13 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/mock_loading"/>
         </androidx.cardview.widget.CardView>
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="180dp"
+            android:layout_height="56dp"
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/loading_animate" />
 
 <!--        <com.airbnb.lottie.LottieAnimationView-->
 <!--            android:id="@+id/iconTransfer"-->

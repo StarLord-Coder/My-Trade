@@ -200,6 +200,6 @@ class SQLiteHelper(context: Context) :
     private fun convertFormat(fullFormatDate: String): String {
         val arrStr1 = fullFormatDate.split(" ")
         val arrStr2 = arrStr1[0].split("-")
-        return arrStr2[1] +"月"+ arrStr2[0]
+        return arrStr2[1] +"月/"+ arrStr2[0]
     }
 }
