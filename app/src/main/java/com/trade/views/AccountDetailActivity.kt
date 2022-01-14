@@ -15,11 +15,7 @@ import com.trade.adapter.TransactionAdapter
 import com.trade.utils.*
 import java.text.SimpleDateFormat
 import java.util.*
-import android.os.Looper
-
 import android.os.AsyncTask
-import android.view.WindowManager
-import com.trade.dialog.LoadingDialog
 import java.lang.ref.WeakReference
 
 class AccountDetailActivity : AppCompatActivity(){
@@ -65,14 +61,6 @@ class AccountDetailActivity : AppCompatActivity(){
         Handler().postDelayed( {
             getTransactionData()
         }, 2000)
-
-//        var handler = Handler()
-//        val r: Runnable = object : Runnable {
-//            override fun run() {
-//                getTransactionData()
-//                handler.postDelayed(this, 7000)
-//            }
-//        }
 //
 //        handler.postDelayed(r, 1000)
 
@@ -347,6 +335,4 @@ class AccountDetailActivity : AppCompatActivity(){
 
         }
     }
-
 }
-
