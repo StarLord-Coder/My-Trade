@@ -159,6 +159,7 @@ class SQLiteHelper(context: Context) :
 
                 if(tempMont == ""){
                     tempMont = convertFormat(txTime)
+                    exchangeList.add(tx)
                 }else{
                     if(tempMont == convertFormat(txTime)){
                         exchangeList.add(tx)
@@ -178,6 +179,7 @@ class SQLiteHelper(context: Context) :
                             tx_in_month = exchangeList
                         )
                         exchangeList = ArrayList<ExchangeModel>()
+                        exchangeList.add(tx)
                         tempMont = convertFormat(txTime)
                         transactionList.add(transaction)
                     }
