@@ -49,12 +49,6 @@ class AccountOverviewActivity : AppCompatActivity() {
         }
     }
 
-     fun changeActivity() {
-
-    }
-
-
-
     private fun toAccountTransaction() {
 
         val intent = Intent(this@AccountOverviewActivity, AccountDetailActivity::class.java)

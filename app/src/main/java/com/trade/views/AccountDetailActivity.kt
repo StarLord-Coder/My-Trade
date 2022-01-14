@@ -109,7 +109,12 @@ class AccountDetailActivity : AppCompatActivity(){
         }
 
         btnConfirm?.setOnClickListener {
-            confirmFilter()
+            rlLoading?.visibility = View.VISIBLE
+            Handler().postDelayed( {
+                confirmFilter()
+                rlLoading?.visibility = View.GONE
+            }, 500)
+
         }
 
         btnBack?.setOnClickListener {
@@ -141,7 +146,12 @@ class AccountDetailActivity : AppCompatActivity(){
 //        val transactionList = ReadData().readJson(this)
         rvTransaction?.layoutManager = LinearLayoutManager(this)
         transactionAdapter = TransactionAdapter(this, transactionList) { position, exchangeModel ->
-            toAccountTransaction(exchangeModel)
+//            rlLoading?.visibility = View.VISIBLE
+            Handler().postDelayed( {
+                toAccountTransaction(exchangeModel)
+//                rlLoading?.visibility = View.GONE
+            }, 500)
+
         }
         rvTransaction?.adapter = transactionAdapter
         rlLoading?.visibility = View.GONE
@@ -264,6 +274,7 @@ class AccountDetailActivity : AppCompatActivity(){
     }
 
     private fun toAccountTransaction(exchangeModel: ExchangeModel) {
+
         val intent = Intent(this@AccountDetailActivity, TransactionDetailActivity::class.java)
         intent.putExtra("tx_amount", exchangeModel.tx_amount)
         intent.putExtra("counterparty_acct_name", exchangeModel.counterparty_acct_name)
