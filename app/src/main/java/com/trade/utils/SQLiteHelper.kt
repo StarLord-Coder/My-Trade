@@ -182,11 +182,11 @@ class SQLiteHelper(context: Context) :
                         transactionList.add(transaction)
                     }
                 }
-                println("tempMont = "+tempMont)
 
             } while (cursor.moveToNext())
 
         }
+
         return transactionList
     }
 
