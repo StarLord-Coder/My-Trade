@@ -46,7 +46,7 @@ class SplashActivity : AppCompatActivity() {
     private fun insertFirstData() {
 
         val gson = Gson()
-        val jsonFileString = getJsonDataFromAsset(applicationContext, "c1_final.json")
+        val jsonFileString = getJsonDataFromAsset(applicationContext, "c3_0113.json")
         val listTx = object : TypeToken<List<ExchangeModel>>() {}.type
         var txModel: List<ExchangeModel> = gson.fromJson(jsonFileString, listTx)
 
@@ -66,7 +66,6 @@ class SplashActivity : AppCompatActivity() {
                 counterparty_acct_name = item.counterparty_acct_name,
                 counterparty_acct_no=item.counterparty_acct_no,
                 tx_short_date = "", tx_short_time = "")
-
 
             val status = sqLiteHelper.insertTXAmount(tx)
         }
