@@ -58,16 +58,23 @@ class AccountDetailActivity : AppCompatActivity(){
         sqLiteHelper = SQLiteHelper(this)
         initialComponent()
         initialEvent()
-        val task = MyAsyncTask(this)
-        task.execute(10)
+//        val task = MyAsyncTask(this)
+//        task.execute(10)
 
-//        initialTransactionData()
+        rlLoading?.visibility = View.VISIBLE
+        Handler().postDelayed( {
+            getTransactionData()
+        }, 2000)
 
-//        rlLoading?.visibility = View.VISIBLE
-//        Handler().postDelayed({
+//        var handler = Handler()
+//        val r: Runnable = object : Runnable {
+//            override fun run() {
+//                getTransactionData()
+//                handler.postDelayed(this, 7000)
+//            }
+//        }
 //
-//            getTransactionData()
-//        }, 2000)
+//        handler.postDelayed(r, 1000)
 
 //        val handler = Handler(Looper.getMainLooper())
 //        handler.post {
@@ -76,7 +83,6 @@ class AccountDetailActivity : AppCompatActivity(){
 //        GetDataTask {
 //            getTransactionData()
 //        }.execute()
-
     }
 
     private fun initialComponent() {
@@ -134,12 +140,7 @@ class AccountDetailActivity : AppCompatActivity(){
             Log.v("CURRENT END DATE", tempEnd)
             Log.v("CURRENT START DATE", tempStart)
             transactionList = sqLiteHelper.getAllTransactions(tempStart, tempEnd)
-
-            runOnUiThread {
-                initialTransactionData()
-            }
-
-
+            initialTransactionData()
             val arrEnd = endDate!!.split(" ")
             tvEndDate?.text = arrEnd[0].replace("-", "/")
 

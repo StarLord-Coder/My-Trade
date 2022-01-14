@@ -36,9 +36,9 @@ class AccountOverviewActivity : AppCompatActivity() {
 //            runOnUiThread {
 //
 //            }
-            loadingDialog = LoadingDialog(this)
-            loadingDialog!!.setCancelable(false)
-            loadingDialog!!.show()
+//            loadingDialog = LoadingDialog(this)
+//            loadingDialog!!.setCancelable(false)
+//            loadingDialog!!.show()
             toAccountTransaction()
 
         }
