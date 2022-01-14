@@ -12,6 +12,11 @@
         <entry key="..\:/project/My-Trade/app/src/main/res/layout/activity_transaction_detail.xml" value="0.2" />
         <entry key="..\:/project/My-Trade/app/src/main/res/layout/item_transaction.xml" value="0.328125" />
         <entry key="..\:/project/My-Trade/app/src/main/res/layout/item_transaction_day.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_account_detail.xml" value="0.30939226519337015" />
+        <entry key="app/src/main/res/layout/activity_transaction_detail.xml" value="0.30416666666666664" />
+        <entry key="app/src/main/res/layout/dialog_filter.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/item_transaction.xml" value="0.30416666666666664" />
+        <entry key="app/src/main/res/layout/item_transaction_day.xml" value="0.67" />
       </map>
     </option>
   </component>

@@ -92,7 +92,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -124,16 +124,16 @@
             <View
                 android:id="@+id/lineHeader"
                 android:layout_width="match_parent"
-                android:layout_height="0.8dp"
-                android:background="@color/color_line_filter"
+                android:layout_height="0.5dp"
+                android:background="#d8d8e0"
                 android:layout_below="@+id/rlTop" />
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/scroller"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/lineHeader"
-                android:layout_above="@+id/llBottom">
+                android:layout_above="@+id/llBottom"
+                android:layout_below="@+id/lineHeader">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -186,9 +186,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
+                        android:layout_height="0.5dp"
                         android:layout_marginTop="13dp"
-                        android:background="@color/color_line_filter" />
+                        android:background="#d8d8e0" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -225,8 +225,8 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
-                        android:background="@color/color_line_filter" />
+                        android:layout_height="0.5dp"
+                        android:background="#d8d8e0" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -265,9 +265,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
+                        android:layout_height="0.5dp"
                         android:layout_marginTop="12dp"
-                        android:background="@color/color_line_filter" />
+                        android:background="#d8d8e0" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -316,8 +316,8 @@
                             android:layout_marginStart="10dp"
                             android:background="@drawable/bg_btn_gray_white"
                             android:text="收入"
-                            android:textSize="13sp"
-                            android:textColor="@color/color_dark_font_filter"/>
+                            android:textColor="@color/color_dark_font_filter"
+                            android:textSize="13sp" />
 
                         <Button
                             android:layout_width="84dp"
@@ -325,16 +325,16 @@
                             android:layout_marginStart="10dp"
                             android:background="@drawable/bg_btn_gray_white"
                             android:text="支出"
-                            android:textSize="13sp"
-                            android:textColor="@color/color_dark_font_filter"/>
+                            android:textColor="@color/color_dark_font_filter"
+                            android:textSize="13sp" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
+                        android:layout_height="0.5dp"
                         android:layout_marginTop="12dp"
-                        android:background="@color/color_line_filter" />
+                        android:background="#d8d8e0" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -389,9 +389,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
+                        android:layout_height="0.5dp"
                         android:layout_marginTop="12dp"
-                        android:background="@color/color_line_filter" />
+                        android:background="#d8d8e0" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -435,9 +435,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
+                        android:layout_height="0.5dp"
                         android:layout_marginTop="12dp"
-                        android:background="@color/color_line_filter" />
+                        android:background="#d8d8e0" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -459,9 +459,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
+                        android:layout_height="0.5dp"
                         android:layout_marginTop="12dp"
-                        android:background="@color/color_line_filter" />
+                        android:background="#d8d8e0" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -483,7 +483,7 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
+                        android:layout_height="0.5dp"
                         android:layout_marginTop="7dp"
                         android:background="@color/color_line_filter" />
 
