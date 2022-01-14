@@ -12,7 +12,7 @@ class ReadData {
     private fun getJsonDataFromAsset(context: Context): String? {
         lateinit var jsonString: String
         try {
-            jsonString = context.assets.open("c1_final.json")
+            jsonString = context.assets.open("c2_0113.json")
                 .bufferedReader()
                 .use { it.readText() }
 

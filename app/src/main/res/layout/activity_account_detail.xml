@@ -46,7 +46,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/img_account_detail_box_1" />
+                        android:src="@drawable/img_account_detail_box_1_app_2" />
 
                     <Button
                         android:id="@+id/btnFilter"
