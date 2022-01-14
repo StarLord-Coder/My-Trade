@@ -34,7 +34,7 @@ class MeActivity : AppCompatActivity() {
     }
 
     private fun toMe() {
-        val intent = Intent(this@MeActivity, AccountOverviewActivity::class.java)
+        val intent = Intent(this@MeActivity, AccountDetailActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }

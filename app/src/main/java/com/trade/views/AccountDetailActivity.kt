@@ -20,10 +20,11 @@ import android.os.Looper
 import android.os.AsyncTask
 import android.view.WindowManager
 import com.trade.dialog.LoadingDialog
+import java.lang.ref.WeakReference
 
 class AccountDetailActivity : AppCompatActivity(){
 
-    private lateinit var sqLiteHelper: SQLiteHelper
+     lateinit var sqLiteHelper: SQLiteHelper
 
     private var btnFilter: Button? = null
     private var tvStartDate: TextView? = null
@@ -34,8 +35,8 @@ class AccountDetailActivity : AppCompatActivity(){
     private var filterView: RelativeLayout? = null
     private var rvTransaction: RecyclerView? = null
     private var rlLoading: RelativeLayout? = null
-    private var startDate: String? = ""
-    private var endDate: String? = ""
+     var startDate: String? = ""
+     var endDate: String? = ""
     private var btnBack: Button? = null
     private var imgBox1: ImageView? = null
 
@@ -57,7 +58,10 @@ class AccountDetailActivity : AppCompatActivity(){
         sqLiteHelper = SQLiteHelper(this)
         initialComponent()
         initialEvent()
-        initialTransactionData()
+        val task = MyAsyncTask(this)
+        task.execute(10)
+
+//        initialTransactionData()
 
 //        rlLoading?.visibility = View.VISIBLE
 //        Handler().postDelayed({
@@ -69,9 +73,9 @@ class AccountDetailActivity : AppCompatActivity(){
 //        handler.post {
 //            getTransactionData()
 //        }
-        GetDataTask {
-            getTransactionData()
-        }.execute()
+//        GetDataTask {
+//            getTransactionData()
+//        }.execute()
 
     }
 
@@ -287,34 +291,61 @@ class AccountDetailActivity : AppCompatActivity(){
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
-//    internal class GetDataTask : AsyncTask<Void?, Void?, Void?>(context: Con) {
-//        val dialog = LoadingDialog(this@AccountDetailActivity)
-//        override fun onPreExecute() {
-//            super.onPreExecute()
-////            rlLoading?.visibility = View.VISIBLE
-//        }
-//
-//        override fun onPostExecute(result: Void?) {
-//            super.onPostExecute(result)
-//        }
-//
-//        override fun doInBackground(vararg p0: Void?): Void? {
-//            TODO("Not yet implemented")
-//            return null
-//        }
-//    }
 
+    companion object {
+        class MyAsyncTask internal constructor(context: AccountDetailActivity) : AsyncTask<Int, String, String?>() {
+
+            private val activityReference: WeakReference<AccountDetailActivity> = WeakReference(context)
+
+            override fun doInBackground(vararg p0: Int?): String? {
+                val activity = activityReference.get()
+                if (activity == null || activity.isFinishing) return null
+
+                if (activity.startDate.isNullOrEmpty() && activity.endDate.isNullOrEmpty()) {
+                    val tempEnd = activity.getCurrentDateTime()
+                    val tempStart = activity.getBefore6month()
+
+                    activity.startDate = tempStart
+                    activity.endDate = tempEnd
+                    Log.v("CURRENT END DATE", tempEnd)
+                    Log.v("CURRENT START DATE", tempStart)
+                    activity.transactionList = activity.sqLiteHelper.getAllTransactions(tempStart, tempEnd)
+
+                    activity.runOnUiThread {
+                        activity.initialTransactionData()
+                    }
+
+                    val arrEnd = activity.endDate!!.split(" ")
+                    activity.tvEndDate?.text = arrEnd[0].replace("-", "/")
+
+                    val arrStart = activity.startDate!!.split(" ")
+                    activity.tvStartDate?.text = arrStart[0].replace("-", "/")
+
+                    activity.rvTransaction?.layoutManager = LinearLayoutManager(activity)
+                    activity.transactionAdapter = TransactionAdapter(activity, activity.transactionList) { position, exchangeModel ->
+                        activity.toAccountTransaction(exchangeModel)
+                    }
+                    activity.rvTransaction?.adapter = activity.transactionAdapter
+                    activity.rlLoading?.visibility = View.GONE
+                }
+                return ""
+            }
+
+            override fun onPreExecute() {
+                val activity = activityReference.get()
+                if (activity == null || activity.isFinishing) return
+                activity.rlLoading?.visibility = View.VISIBLE
+            }
+
+            override fun onPostExecute(result: String?) {
+
+                val activity = activityReference.get()
+                if (activity == null || activity.isFinishing) return
+                activity.rlLoading?.visibility = View.GONE
+            }
+
+        }
+    }
 
 }
 
-class  MyAssyn : AsyncTask<Any, Any, Any>()
-{
-
-    override fun doInBackground(vararg params: Any?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onPostExecute(result: Any?) {
-        super.onPostExecute(result)
-    }
-}

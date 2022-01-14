@@ -5,6 +5,7 @@
     <application
         android:allowBackup="true"
         android:largeHeap="true"
+        android:name=".views.MyTradeApplication"
         android:icon="@drawable/ic_app_icon_2"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_app_icon_2"
@@ -29,6 +30,12 @@
 
         <activity
             android:name="com.trade.views.LoginActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible"/>
+
+        <activity
+            android:name="com.trade.views.MainAccountActivity"
             android:theme="@style/NoActionBar"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible"/>

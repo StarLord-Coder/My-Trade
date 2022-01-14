@@ -1,6 +1,7 @@
 package com.trade.utils
 
 import android.app.ProgressDialog
+import android.content.Context
 
 import android.os.AsyncTask
 
@@ -28,3 +29,4 @@ class GetDataTask(val handler: () -> Unit) : AsyncTask<Void, Void, Void>() {
         return null
     }
 }
+

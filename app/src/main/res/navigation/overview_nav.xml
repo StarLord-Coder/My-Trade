@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/overview_nav">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/overview_nav"
+    app:startDestination="@id/accountOverviewFragment">
 
+
+    <fragment
+        android:id="@+id/accountOverviewFragment"
+        android:name="com.trade.views.AccountOverviewFragment"
+        android:label="AccountOverviewFragment"
+        tools:layout="@layout/fragment_account_overview">
+        <action
+            android:id="@+id/action_accountOverviewFragment_to_accountTransactionFragment"
+            app:destination="@id/accountTransactionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountTransactionFragment"
+        android:name="com.trade.views.AccountTransactionFragment"
+        android:label="AccountTransactionFragment"
+        tools:layout="@layout/fragment_transaction"/>
 </navigation>
