@@ -166,8 +166,8 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:text="忘记密码"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="16sp" />
+            android:textColor="#378de2"
+            android:textSize="14sp" />
 
     </RelativeLayout>
 
@@ -217,8 +217,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="查余额"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="18sp" />
+            android:textColor="#378de2"
+            android:textSize="15sp" />
 
         <View
             android:id="@+id/line3"
@@ -232,8 +232,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="语言/Language"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="18sp" />
+            android:textColor="#378de2"
+            android:textSize="15sp" />
 
         <View
             android:id="@+id/line4"
@@ -246,9 +246,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="指纹/手贽"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="18sp" />
+            android:text="指纹/手势"
+            android:textColor="#378de2"
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -282,7 +282,7 @@
             android:paddingEnd="6dp"
             android:text="其他登录方式"
             android:textColor="@color/color_dark_font_filter"
-            android:textSize="15sp" />
+            android:textSize="13sp" />
 
     </RelativeLayout>
 

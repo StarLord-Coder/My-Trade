@@ -231,20 +231,20 @@ class AccountDetailActivity : AppCompatActivity(){
     private fun updateStartDateInView() {
         val myFormat = "yyyy/MM/dd" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        tvStartDate!!.text = sdf.format(c.getTime())
+        tvStartDate!!.text = sdf.format(c.time)
     }
 
     private fun updateEndDateInView() {
         val myFormat = "yyyy/MM/dd" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        tvEndDate!!.text = sdf.format(c.getTime())
+        tvEndDate!!.text = sdf.format(c.time)
     }
 
     private fun getCurrentDateTime(): String {
         val currentDate = Calendar.getInstance().time
         val myFormat = "yyyy-MM-dd 23:59:59"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        return sdf.format(currentDate.getTime())
+        return sdf.format(currentDate.time)
     }
 
     private fun getBefore6month(): String {
@@ -262,7 +262,7 @@ class AccountDetailActivity : AppCompatActivity(){
     private fun convertToDMY(strDate: String): String {
         val myFormat = "dd/MM/yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        return sdf.format(c.getTime())
+        return sdf.format(c.time)
     }
 
     override fun onBackPressed() {
@@ -309,9 +309,6 @@ class AccountDetailActivity : AppCompatActivity(){
 
 class  MyAssyn : AsyncTask<Any, Any, Any>()
 {
-    override fun onPreExecute() {
-        super.onPreExecute()
-    }
 
     override fun doInBackground(vararg params: Any?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

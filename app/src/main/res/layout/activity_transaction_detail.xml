@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-        
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="49dp">
@@ -26,23 +26,23 @@
                 android:scaleType="fitStart"
                 android:src="@drawable/img_header_transaction_detail" />
 
-<!--            <ImageView-->
-<!--                android:id="@+id/btnBack"-->
-<!--                android:layout_width="40dp"-->
-<!--                android:layout_height="47dp"-->
-<!--                android:padding="15dp"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:adjustViewBounds="true"-->
-<!--                android:background="@color/white"-->
-<!--                android:src="@drawable/ic_back_arrow" />-->
+            <!--            <ImageView-->
+            <!--                android:id="@+id/btnBack"-->
+            <!--                android:layout_width="40dp"-->
+            <!--                android:layout_height="47dp"-->
+            <!--                android:padding="15dp"-->
+            <!--                android:layout_centerVertical="true"-->
+            <!--                android:adjustViewBounds="true"-->
+            <!--                android:background="@color/white"-->
+            <!--                android:src="@drawable/ic_back_arrow" />-->
             <Button
                 android:id="@+id/btnBack"
                 android:layout_width="40dp"
                 android:layout_height="49dp"
                 android:background="@android:color/transparent" />
-            
+
         </RelativeLayout>
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="对方账户名称/\n账号"
-                android:textSize="13sp"
+                android:textSize="13.5sp"
                 android:textColor="@color/black"/>
 
             <TextView
@@ -102,8 +102,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_gravity="center_vertical"
                 android:text=""
-                android:textSize="14sp"
-                android:textColor="@color/black"/>
+                android:textSize="13.5sp"
+                android:textColor="#666666"/>
 
         </LinearLayout>
 
@@ -135,7 +135,7 @@
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:text="交易时间"
-                    android:textSize="13sp"
+                    android:textSize="13.5sp"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -146,8 +146,8 @@
                     android:layout_gravity="center_vertical"
                     android:text=""
                     android:textStyle="normal"
-                    android:textSize="13sp"
-                    android:textColor="@color/black"/>
+                    android:textSize="13.5sp"
+                    android:textColor="#666666"/>
 
             </LinearLayout>
 
@@ -163,7 +163,7 @@
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:text="记账时间"
-                    android:textSize="13sp"
+                    android:textSize="13.5sp"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -173,8 +173,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_gravity="center_vertical"
                     android:text=""
-                    android:textSize="13sp"
-                    android:textColor="@color/black"/>
+                    android:textSize="13.5sp"
+                    android:textColor="#666666"/>
 
             </LinearLayout>
 
@@ -190,7 +190,7 @@
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:text="业务摘要"
-                    android:textSize="13sp"
+                    android:textSize="13.5sp"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -200,8 +200,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_gravity="center_vertical"
                     android:text=""
-                    android:textSize="13sp"
-                    android:textColor="@color/black"/>
+                    android:textSize="13.5sp"
+                    android:textColor="#666666"/>
 
             </LinearLayout>
 
@@ -217,7 +217,7 @@
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:text="余额"
-                    android:textSize="13sp"
+                    android:textSize="13.5sp"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -227,8 +227,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_gravity="center_vertical"
                     android:text=""
-                    android:textSize="13sp"
-                    android:textColor="@color/black"/>
+                    android:textSize="13.5sp"
+                    android:textColor="#666666"/>
 
             </LinearLayout>
 
@@ -244,7 +244,7 @@
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:text="交易渠道/场所"
-                    android:textSize="13sp"
+                    android:textSize="13.5sp"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -254,8 +254,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_gravity="center_vertical"
                     android:text=""
-                    android:textSize="13sp"
-                    android:textColor="@color/black"/>
+                    android:textSize="13.5sp"
+                    android:textColor="#666666"/>
 
             </LinearLayout>
 
@@ -271,7 +271,7 @@
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:text="附言"
-                    android:textSize="13sp"
+                    android:textSize="13.5sp"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -281,8 +281,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_gravity="center_vertical"
                     android:text=""
-                    android:textSize="13sp"
-                    android:textColor="@color/black"/>
+                    android:textSize="13.5sp"
+                    android:textColor="#666666"/>
 
             </LinearLayout>
 
@@ -296,7 +296,7 @@
             android:paddingEnd="14dp"
             android:layout_gravity="center_vertical"
             android:text="@string/remark"
-            android:textSize="13.3sp"
+            android:textSize="13.5sp"
             android:textColor="#666666"
             android:background="#F4F4F4"/>
 

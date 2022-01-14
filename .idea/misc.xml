@@ -3,7 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/project/My-Trade/app/src/main/res/drawable/bg_btn_gray_white.xml" value="0.21614583333333334" />
+        <entry key="..\:/project/My-Trade/app/src/main/res/drawable/bg_btn_red_white.xml" value="0.21614583333333334" />
+        <entry key="..\:/project/My-Trade/app/src/main/res/layout/activity_account_overview.xml" value="0.2" />
+        <entry key="..\:/project/My-Trade/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/project/My-Trade/app/src/main/res/layout/activity_me.xml" value="0.2" />
+        <entry key="..\:/project/My-Trade/app/src/main/res/layout/activity_search.xml" value="0.2" />
+        <entry key="..\:/project/My-Trade/app/src/main/res/layout/activity_transaction_detail.xml" value="0.2" />
         <entry key="..\:/project/My-Trade/app/src/main/res/layout/item_transaction.xml" value="0.328125" />
+        <entry key="..\:/project/My-Trade/app/src/main/res/layout/item_transaction_day.xml" value="0.2" />
       </map>
     </option>
   </component>

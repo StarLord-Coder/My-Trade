@@ -97,7 +97,7 @@ class SQLiteHelper(context: Context) :
         try {
             cursor = db.rawQuery(SQL_QUERY, null)
         } catch (e: Exception) {
-            e.printStackTrace();
+            e.printStackTrace()
             db.execSQL(SQL_QUERY)
             return ArrayList()
         }
@@ -162,7 +162,7 @@ class SQLiteHelper(context: Context) :
                 }else{
                     if(tempMont == convertFormat(txTime)){
                         exchangeList.add(tx)
-                        if(cursor.isLast()){
+                        if(cursor.isLast){
                             transaction = Transaction(
                                 month = tempMont,
                                 tx_in_month = exchangeList
