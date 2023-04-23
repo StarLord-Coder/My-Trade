@@ -37,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
 //        val listData = ReadData().readJsonTx(this)
 
         Handler().postDelayed({
-            toFirstScreen()
+            toAdsScreen()
         }, 3000)
     }
 
@@ -72,8 +72,8 @@ class SplashActivity : AppCompatActivity() {
 
     }
 
-    private fun toFirstScreen() {
-        val intent = Intent(this@SplashActivity, MainActivity::class.java)
+    private fun toAdsScreen() {
+        val intent = Intent(this@SplashActivity, AdsActivity::class.java)
         startActivity(intent)
         finish()
     }

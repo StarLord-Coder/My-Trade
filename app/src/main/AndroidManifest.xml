@@ -23,6 +23,12 @@
         </activity>
 
         <activity
+            android:name="com.trade.views.AdsActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity
             android:name="com.trade.views.MainActivity"
             android:theme="@style/NoActionBar"
             android:screenOrientation="portrait"
