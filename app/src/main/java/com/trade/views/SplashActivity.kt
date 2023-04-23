@@ -7,13 +7,11 @@ import android.os.Handler
 import android.os.StrictMode
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.trade.R
 import com.trade.utils.ExchangeModel
-import com.trade.utils.ReadData
 import com.trade.utils.SQLiteHelper
 import com.trade.utils.getJsonDataFromAsset
 
@@ -46,7 +44,7 @@ class SplashActivity : AppCompatActivity() {
     private fun insertFirstData() {
 
         val gson = Gson()
-        val jsonFileString = getJsonDataFromAsset(applicationContext, "c1_final.json")
+        val jsonFileString = getJsonDataFromAsset(applicationContext, "act_43999.json")
         val listTx = object : TypeToken<List<ExchangeModel>>() {}.type
         var txModel: List<ExchangeModel> = gson.fromJson(jsonFileString, listTx)
 

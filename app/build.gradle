@@ -5,12 +5,12 @@ plugins {
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs"
 android {
-    compileSdk 30
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.trade"
         minSdk 28
-        targetSdk 30
+        targetSdk 33
         versionCode 4
         versionName "4.0"
 

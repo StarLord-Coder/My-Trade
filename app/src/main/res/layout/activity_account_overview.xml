@@ -102,7 +102,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="12dp"
-                            android:text="48,276,187.98"
+                            android:text="53,994,213.51"
                             android:textColor="@color/black"
                             android:textStyle="normal" />
 
