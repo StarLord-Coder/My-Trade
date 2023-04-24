@@ -16,6 +16,7 @@ import com.trade.utils.*
 import java.text.SimpleDateFormat
 import java.util.*
 import android.os.AsyncTask
+import kotlinx.android.synthetic.main.activity_account_detail.*
 import java.lang.ref.WeakReference
 
 class AccountDetailActivity : AppCompatActivity(){
@@ -115,6 +116,10 @@ class AccountDetailActivity : AppCompatActivity(){
                 rlLoading?.visibility = View.GONE
             }, 500)
 
+        }
+
+        btnBackFilter?.setOnClickListener {
+            filterView?.visibility = View.GONE
         }
 
         btnBack?.setOnClickListener {
