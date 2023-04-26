@@ -7,6 +7,9 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.trade.R
+import kotlinx.android.synthetic.main.activity_me.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class MeActivity : AppCompatActivity() {
 
@@ -31,6 +34,12 @@ class MeActivity : AppCompatActivity() {
         btnAccountView?.setOnClickListener {
             toMe()
         }
+
+        val current = LocalDateTime.now()
+
+        val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")
+        val formatted = current.format(formatter)
+        tvDate.text = "$formatted"
     }
 
     private fun toMe() {
