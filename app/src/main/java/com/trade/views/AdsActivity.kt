@@ -19,7 +19,7 @@ class AdsActivity : AppCompatActivity() {
         val timer = object: CountDownTimer(3000, 1000) {
             var sec = 3
             override fun onTick(millisUntilFinished: Long) {
-                tvCountdown.text = "test : $sec"
+                tvCountdown.text = "跳过 $sec"
                 sec--
             }
 

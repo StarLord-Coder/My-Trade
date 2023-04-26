@@ -11,6 +11,7 @@ import com.trade.R
 class MainWithLoginActivity : AppCompatActivity() {
 
     private var btnMe: Button? = null
+    private var btnMeAct: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,16 +25,27 @@ class MainWithLoginActivity : AppCompatActivity() {
 
     private fun initialComponent() {
         btnMe = findViewById(R.id.btnMe)
+        btnMeAct = findViewById(R.id.btnMeAct)
     }
 
     private fun initialEvent() {
         btnMe?.setOnClickListener {
             toMe()
         }
+
+        btnMeAct?.setOnClickListener {
+            toMeAct()
+        }
     }
 
     private fun toMe() {
         val intent = Intent(this@MainWithLoginActivity, MeActivity::class.java)
+        startActivity(intent)
+//        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
+
+    private fun toMeAct() {
+        val intent = Intent(this@MainWithLoginActivity, AccountOverviewActivity::class.java)
         startActivity(intent)
 //        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
