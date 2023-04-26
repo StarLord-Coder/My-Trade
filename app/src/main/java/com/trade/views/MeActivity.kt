@@ -39,7 +39,7 @@ class MeActivity : AppCompatActivity() {
 
         val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")
         val formatted = current.format(formatter)
-        tvDate.text = "$formatted"
+//        tvDate.text = "$formatted"
     }
 
     private fun toMe() {
