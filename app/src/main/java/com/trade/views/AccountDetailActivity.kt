@@ -46,6 +46,11 @@ class AccountDetailActivity : AppCompatActivity(){
     var transactionList = ArrayList<Transaction>()
     private var isShowFilter = false
 
+    private var btn1Day: Button? = null
+    private var btn1Month: Button? = null
+    private var btn3Month: Button? = null
+    private var prevState = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_detail)
@@ -94,6 +99,9 @@ class AccountDetailActivity : AppCompatActivity(){
         imgBox1 = findViewById(R.id.imgBox1)
         tvTextFilter = findViewById(R.id.tvTextFilter)
         icFilter = findViewById(R.id.icFilter)
+        btn1Day = findViewById(R.id.btn1Day)
+        btn1Month = findViewById(R.id.btn1Month)
+        btn3Month = findViewById(R.id.btn3Month)
     }
 
     private fun initialEvent() {
@@ -127,6 +135,20 @@ class AccountDetailActivity : AppCompatActivity(){
             resetFilter()
         }
 
+        btn1Day?.setOnClickListener {
+            clearState()
+            set1Day()
+        }
+
+        btn1Month?.setOnClickListener {
+            clearState()
+            set1Month()
+        }
+
+        btn3Month?.setOnClickListener {
+            clearState()
+            set3Month()
+        }
         btnConfirm?.setOnClickListener {
             rlLoading?.visibility = View.VISIBLE
             Handler().postDelayed( {
@@ -155,10 +177,37 @@ class AccountDetailActivity : AppCompatActivity(){
         }
     }
 
+    private fun set1Day() {
+        prevState = "1_DAY"
+        btn1Day?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
+        btn1Day?.background = getDrawable(R.drawable.bg_btn_red_white)
+    }
+
+    private fun set1Month() {
+        prevState = "1_MONTH"
+        btn1Month?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
+        btn1Month?.background = getDrawable(R.drawable.bg_btn_red_white)
+    }
+
+    private fun set3Month() {
+        prevState = "3_MONTH"
+        btn3Month?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
+        btn3Month?.background = getDrawable(R.drawable.bg_btn_red_white)
+    }
+
+    private fun clearState() {
+        prevState = ""
+        btn1Day?.background = getDrawable(R.drawable.bg_btn_gray_white)
+        btn1Month?.background = getDrawable(R.drawable.bg_btn_gray_white)
+        btn3Month?.background = getDrawable(R.drawable.bg_btn_gray_white)
+        btn1Day?.setTextColor(ContextCompat.getColor(this, R.color.color_dark_font_filter))
+        btn1Month?.setTextColor(ContextCompat.getColor(this, R.color.color_dark_font_filter))
+        btn3Month?.setTextColor(ContextCompat.getColor(this, R.color.color_dark_font_filter))
+    }
+
     private fun setRedFilter() {
         println("red")
         tvTextFilter?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
-//        icFilter?.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.filter_red_transparent))
         icFilter?.setImageResource(R.drawable.filter_red_transparent)
     }
 

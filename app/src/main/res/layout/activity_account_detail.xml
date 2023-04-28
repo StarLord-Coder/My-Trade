@@ -23,9 +23,16 @@
         <Button
             android:id="@+id/btnBack"
             android:layout_width="40dp"
-            android:layout_height="49dp"
+            android:layout_height="47dp"
             android:contentDescription="@string/btn_back"
             android:background="@android:color/transparent" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/white"
+            android:layout_marginTop="-3dp"
+            android:layout_below="@+id/imgHeader"/>
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scrollView"
@@ -127,7 +134,7 @@
         android:id="@+id/filterView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="46dp"
         android:background="#80000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -185,6 +192,7 @@
                     android:background="@color/white"
                     android:elevation="1.2dp">
 
+
                     <TextView
                         android:id="@+id/btnCancel"
                         android:layout_width="wrap_content"
@@ -234,29 +242,32 @@
                             android:orientation="horizontal">
 
                             <Button
+                                android:id="@+id/btn1Day"
                                 android:layout_width="84dp"
                                 android:layout_height="31dp"
                                 android:layout_marginStart="10dp"
                                 android:background="@drawable/bg_btn_gray_white"
-                                android:text="近1周"
+                                android:text="@string/prev_1_day"
                                 android:textColor="@color/color_dark_font_filter"
                                 android:textSize="13sp" />
 
                             <Button
+                                android:id="@+id/btn1Month"
                                 android:layout_width="84dp"
                                 android:layout_height="31dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="10dp"
                                 android:background="@drawable/bg_btn_gray_white"
-                                android:text="近1月"
+                                android:text="@string/prev_1_month"
                                 android:textColor="@color/color_dark_font_filter"
                                 android:textSize="13sp" />
 
                             <Button
+                                android:id="@+id/btn3Month"
                                 android:layout_width="84dp"
                                 android:layout_height="31dp"
                                 android:background="@drawable/bg_btn_gray_white"
-                                android:text="近3月"
+                                android:text="@string/prev_3_month"
                                 android:textColor="@color/color_dark_font_filter"
                                 android:textSize="13sp" />
                         </LinearLayout>
