@@ -9,15 +9,33 @@ import kotlinx.android.synthetic.main.activity_ads.*
 
 class AdsActivity : AppCompatActivity() {
 
+    lateinit var timer: CountDownTimer
+    private var isPauseTimer = false
+
+    private var sec = 3
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ads)
-        countdownAds()
+        initialEvent()
+        countdownAds(sec)
     }
 
-    private fun countdownAds() {
-        val timer = object: CountDownTimer(3000, 1000) {
-            var sec = 3
+    private fun initialEvent() {
+        tvCountdown.setOnClickListener {
+            if (!isPauseTimer) {
+                isPauseTimer = true
+                pauseTimer()
+            } else {
+                isPauseTimer = false
+                resumeTimer()
+            }
+        }
+    }
+
+    private fun countdownAds(second: Int) {
+        var milliSec = second*1000L
+        timer = object: CountDownTimer(milliSec, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 tvCountdown.text = "跳过 $sec"
                 sec--
@@ -28,6 +46,14 @@ class AdsActivity : AppCompatActivity() {
             }
         }
         timer.start()
+    }
+
+    private fun pauseTimer() {
+        timer.cancel()
+    }
+
+    private fun resumeTimer() {
+        countdownAds(sec)
     }
 
     private fun toFirstScreen() {
