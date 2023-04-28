@@ -2,23 +2,24 @@ package com.trade.views
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.trade.R
 import com.trade.adapter.TransactionAdapter
 import com.trade.utils.*
+import java.lang.ref.WeakReference
 import java.text.SimpleDateFormat
 import java.util.*
-import android.os.AsyncTask
-import androidx.compose.ui.graphics.Color
-import androidx.core.content.ContextCompat
-import java.lang.ref.WeakReference
 
 class AccountDetailActivity : AppCompatActivity(){
 
@@ -36,13 +37,14 @@ class AccountDetailActivity : AppCompatActivity(){
      var startDate: String? = ""
      var endDate: String? = ""
     private var btnBack: Button? = null
-    private var btnBackFilter: Button? = null
+//    private var btnBackFilter: Button? = null
     private var imgBox1: ImageView? = null
     private var icFilter: ImageView? = null
     private var tvTextFilter: TextView? = null
     val c = Calendar.getInstance()
     var transactionAdapter: TransactionAdapter? = null
     var transactionList = ArrayList<Transaction>()
+    private var isShowFilter = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,7 +90,7 @@ class AccountDetailActivity : AppCompatActivity(){
         rvTransaction = findViewById(R.id.rvTransaction)
         rlLoading = findViewById(R.id.rlLoading)
         btnBack = findViewById(R.id.btnBack)
-        btnBackFilter = findViewById(R.id.btnBackFilter)
+//        btnBackFilter = findViewById(R.id.btnBackFilter)
         imgBox1 = findViewById(R.id.imgBox1)
         tvTextFilter = findViewById(R.id.tvTextFilter)
         icFilter = findViewById(R.id.icFilter)
@@ -98,9 +100,18 @@ class AccountDetailActivity : AppCompatActivity(){
         llFilter?.setOnClickListener {
             setRedFilter()
             filterView?.visibility = View.VISIBLE
+            isShowFilter = true
+            val animSlideIn: Animation =
+                AnimationUtils.loadAnimation(applicationContext, R.anim.slide_in_right)
+            filterView?.startAnimation(animSlideIn)
         }
 
         btnCancel?.setOnClickListener {
+            isShowFilter = false
+//            filterView?.visibility = View.GONE
+            val animSlideOut: Animation =
+                AnimationUtils.loadAnimation(applicationContext, R.anim.slide_out_right)
+            filterView?.startAnimation(animSlideOut)
             filterView?.visibility = View.GONE
         }
 
@@ -125,13 +136,22 @@ class AccountDetailActivity : AppCompatActivity(){
 
         }
 
-        btnBackFilter?.setOnClickListener {
-            filterView?.visibility = View.GONE
-        }
+//        btnBackFilter?.setOnClickListener {
+//            filterView?.visibility = View.GONE
+//        }
 
         btnBack?.setOnClickListener {
-            finish()
-            overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left)
+            if (isShowFilter) {
+                isShowFilter = false
+
+                val animSlideOut: Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.slide_out_right)
+                filterView?.startAnimation(animSlideOut)
+                filterView?.visibility = View.GONE
+            } else {
+                finish()
+                overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left)
+            }
+
         }
     }
 

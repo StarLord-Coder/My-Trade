@@ -13,4 +13,6 @@
     <string name="acc_no_topic">收入金额 (人民币元)</string>
 
     <string name="remark">&#x201C;交易时间&#x201D;为该笔交易的提交时间 ; &#x201C;记账时间&#x201D;为后台系\n统对该笔交易的实际处理时间。</string>
+    <string name="txt_filter_cha">筛选</string>
+    <string name="btn_back">ิback</string>
 </resources>
