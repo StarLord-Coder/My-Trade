@@ -16,14 +16,15 @@ import com.trade.utils.*
 import java.text.SimpleDateFormat
 import java.util.*
 import android.os.AsyncTask
-import kotlinx.android.synthetic.main.activity_account_detail.*
+import androidx.compose.ui.graphics.Color
+import androidx.core.content.ContextCompat
 import java.lang.ref.WeakReference
 
 class AccountDetailActivity : AppCompatActivity(){
 
      lateinit var sqLiteHelper: SQLiteHelper
 
-    private var btnFilter: Button? = null
+    private var llFilter: LinearLayout? = null
     private var tvStartDate: TextView? = null
     private var tvEndDate: TextView? = null
     private var btnReset: Button? = null
@@ -35,8 +36,10 @@ class AccountDetailActivity : AppCompatActivity(){
      var startDate: String? = ""
      var endDate: String? = ""
     private var btnBack: Button? = null
+    private var btnBackFilter: Button? = null
     private var imgBox1: ImageView? = null
-
+    private var icFilter: ImageView? = null
+    private var tvTextFilter: TextView? = null
     val c = Calendar.getInstance()
     var transactionAdapter: TransactionAdapter? = null
     var transactionList = ArrayList<Transaction>()
@@ -75,7 +78,7 @@ class AccountDetailActivity : AppCompatActivity(){
     }
 
     private fun initialComponent() {
-        btnFilter = findViewById(R.id.btnFilter)
+        llFilter = findViewById(R.id.llFilter)
         tvStartDate = findViewById(R.id.tvStartDate)
         tvEndDate = findViewById(R.id.tvEndDate)
         btnReset = findViewById(R.id.btnReset)
@@ -85,11 +88,15 @@ class AccountDetailActivity : AppCompatActivity(){
         rvTransaction = findViewById(R.id.rvTransaction)
         rlLoading = findViewById(R.id.rlLoading)
         btnBack = findViewById(R.id.btnBack)
+        btnBackFilter = findViewById(R.id.btnBackFilter)
         imgBox1 = findViewById(R.id.imgBox1)
+        tvTextFilter = findViewById(R.id.tvTextFilter)
+        icFilter = findViewById(R.id.icFilter)
     }
 
     private fun initialEvent() {
-        btnFilter?.setOnClickListener {
+        llFilter?.setOnClickListener {
+            setRedFilter()
             filterView?.visibility = View.VISIBLE
         }
 
@@ -126,6 +133,13 @@ class AccountDetailActivity : AppCompatActivity(){
             finish()
             overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left)
         }
+    }
+
+    private fun setRedFilter() {
+        println("red")
+        tvTextFilter?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
+//        icFilter?.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.filter_red_transparent))
+        icFilter?.setImageResource(R.drawable.filter_red_transparent)
     }
 
     private fun getTransactionData() {
