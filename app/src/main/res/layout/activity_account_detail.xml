@@ -67,7 +67,7 @@
                         android:background="#E4E6EA"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="18dp"
-                        android:layout_marginTop="83.1dp">
+                        android:layout_marginTop="84.2dp">
 
                         <TextView
                             android:id="@+id/tvTextFilter"
@@ -84,9 +84,9 @@
 
                         <ImageView
                             android:id="@+id/icFilter"
-                            android:layout_width="15dp"
-                            android:layout_height="20dp"
-                            android:paddingTop="2.2dp"
+                            android:layout_width="16dp"
+                            android:layout_height="23dp"
+                            android:paddingTop="1.2dp"
                             android:paddingBottom="2.6dp"
                             android:paddingStart="1.8dp"
                             android:paddingEnd="1.8dp"
