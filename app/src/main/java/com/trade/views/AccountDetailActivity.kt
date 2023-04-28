@@ -181,18 +181,21 @@ class AccountDetailActivity : AppCompatActivity(){
         prevState = "1_DAY"
         btn1Day?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
         btn1Day?.background = getDrawable(R.drawable.bg_btn_red_white)
+        tvStartDate?.text = getBefore1week(tvEndDate?.text.toString());
     }
 
     private fun set1Month() {
         prevState = "1_MONTH"
         btn1Month?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
         btn1Month?.background = getDrawable(R.drawable.bg_btn_red_white)
+        tvStartDate?.text = getBefore1month(tvEndDate?.text.toString());
     }
 
     private fun set3Month() {
         prevState = "3_MONTH"
         btn3Month?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
         btn3Month?.background = getDrawable(R.drawable.bg_btn_red_white)
+        tvStartDate?.text = getBefore3month(tvEndDate?.text.toString());
     }
 
     private fun clearState() {
@@ -336,6 +339,41 @@ class AccountDetailActivity : AppCompatActivity(){
         val myFormat = "yyyy-MM-dd 23:59:59"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         return sdf.format(currentDate.time)
+    }
+
+    private fun getBefore1week(endDate: String): String {
+        val myFormat = "yyyy/MM/dd"
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        val cal = Calendar.getInstance()
+        cal.time = Date(endDate)
+        cal.add(Calendar.DATE, -6)
+        val d = cal.time
+        val res: String = sdf.format(d.time)
+        return res
+    }
+
+    private fun getBefore1month(endDate: String): String {
+        val myFormat = "yyyy/MM/dd"
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        val cal = Calendar.getInstance()
+        cal.time = Date(endDate)
+        cal.add(Calendar.MONTH, -1)
+        cal.add(Calendar.DATE, +1)
+        val d = cal.time
+        val res: String = sdf.format(d.time)
+        return res
+    }
+
+    private fun getBefore3month(endDate: String): String {
+        val myFormat = "yyyy/MM/dd"
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        val cal = Calendar.getInstance()
+        cal.time = Date(endDate)
+        cal.add(Calendar.MONTH, -3)
+        cal.add(Calendar.DATE, +1)
+        val d = cal.time
+        val res: String = sdf.format(d.time)
+        return res
     }
 
     private fun getBefore6month(): String {
