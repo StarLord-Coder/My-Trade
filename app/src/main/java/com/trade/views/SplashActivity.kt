@@ -44,7 +44,7 @@ class SplashActivity : AppCompatActivity() {
     private fun insertFirstData() {
 
         val gson = Gson()
-        val jsonFileString = getJsonDataFromAsset(applicationContext, "act_43999.json")
+        val jsonFileString = getJsonDataFromAsset(applicationContext, "act_c3.json")
         val listTx = object : TypeToken<List<ExchangeModel>>() {}.type
         var txModel: List<ExchangeModel> = gson.fromJson(jsonFileString, listTx)
 
