@@ -6,9 +6,9 @@
         android:allowBackup="true"
         android:largeHeap="true"
         android:name=".views.MyTradeApplication"
-        android:icon="@drawable/ic_app_icon_2"
+        android:icon="@drawable/ic_app_icon_2_2023"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_app_icon_2"
+        android:roundIcon="@drawable/ic_app_icon_2_2023"
         android:supportsRtl="true"
         android:theme="@style/NoActionBar">
         <activity
