@@ -1,5 +1,7 @@
 package com.trade.views
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -15,6 +17,7 @@ import com.trade.utils.ExchangeModel
 import com.trade.utils.SQLiteHelper
 import com.trade.utils.getJsonDataFromAsset
 
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var sqLiteHelper: SQLiteHelper
@@ -30,13 +33,15 @@ class SplashActivity : AppCompatActivity() {
         Log.v("count", sqLiteHelper.getCount().toString())
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
-        val count = sqLiteHelper.getCount()
-        if (count == 0L) {
-            insertFirstData()
-        }
+
+
 //        val listData = ReadData().readJsonTx(this)
 
         Handler().postDelayed({
+            val count = sqLiteHelper.getCount()
+            if (count == 0L) {
+                insertFirstData()
+            }
             toAdsScreen()
         }, 3000)
     }
@@ -69,7 +74,6 @@ class SplashActivity : AppCompatActivity() {
             val status = sqLiteHelper.insertTXAmount(tx)
         }
         Log.v("count after insert", sqLiteHelper.getCount().toString())
-
     }
 
     private fun toAdsScreen() {
