@@ -43,7 +43,7 @@ class SplashActivity : AppCompatActivity() {
                 insertFirstData()
             }
             toAdsScreen()
-        }, 3000)
+        }, 2000)
     }
 
     private fun insertFirstData() {

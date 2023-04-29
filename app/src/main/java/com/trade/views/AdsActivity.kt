@@ -12,7 +12,7 @@ class AdsActivity : AppCompatActivity() {
     lateinit var timer: CountDownTimer
     private var isPauseTimer = false
 
-    private var sec = 2
+    private var sec = 3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
