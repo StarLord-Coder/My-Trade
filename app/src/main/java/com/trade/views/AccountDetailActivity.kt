@@ -299,12 +299,12 @@ class AccountDetailActivity : AppCompatActivity(){
             filterView?.visibility = View.GONE
 
             searchData(startDate!!, endDate!!)
-            imgBox1?.setImageDrawable(resources.getDrawable(R.drawable.img_account_detail_box_1_red, null))
+//            imgBox1?.setImageDrawable(resources.getDrawable(R.drawable.img_account_detail_box_1_red, null))
         } else {
             startDate = ""
             endDate = ""
             getTransactionData()
-            imgBox1?.setImageDrawable(resources.getDrawable(R.drawable.img_account_detail_box_1, null))
+//            imgBox1?.setImageDrawable(resources.getDrawable(R.drawable.img_account_detail_box_1, null))
             filterView?.visibility = View.GONE
         }
     }
