@@ -382,7 +382,7 @@ class AccountDetailActivity : AppCompatActivity(){
 
     private fun getCurrentDate(): String {
         val currentDate = Calendar.getInstance().time
-        val myFormat = "yyyy-MM-dd"
+        val myFormat = "yyyy/MM/dd"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         return sdf.format(currentDate.time)
     }
@@ -433,7 +433,7 @@ class AccountDetailActivity : AppCompatActivity(){
     }
 
     private fun getBefore6monthNonTime(): String {
-        val myFormat = "yyyy-MM-dd"
+        val myFormat = "yyyy/MM/dd"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         val cal = Calendar.getInstance()
         cal.time = Date()
