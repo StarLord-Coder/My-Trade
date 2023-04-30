@@ -35,6 +35,13 @@ class AccountDetailActivity : AppCompatActivity(){
     private var filterView: RelativeLayout? = null
     private var rvTransaction: RecyclerView? = null
     private var rlLoading: RelativeLayout? = null
+    private var icTick1Day: ImageView? = null
+    private var icTick1Month: ImageView? = null
+    private var icTick3Month: ImageView? = null
+    private var tv1Day: TextView? = null
+    private var tv1Month: TextView? = null
+    private var tv3Month: TextView? = null
+
      var startDate: String? = ""
      var endDate: String? = ""
     private var btnBack: Button? = null
@@ -48,9 +55,9 @@ class AccountDetailActivity : AppCompatActivity(){
     var transactionList = ArrayList<Transaction>()
     private var isShowFilter = false
 
-    private var btn1Day: Button? = null
-    private var btn1Month: Button? = null
-    private var btn3Month: Button? = null
+    private var btn1Day: LinearLayout? = null
+    private var btn1Month: LinearLayout? = null
+    private var btn3Month: LinearLayout? = null
     private var prevState = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,7 +104,6 @@ class AccountDetailActivity : AppCompatActivity(){
         rvTransaction = findViewById(R.id.rvTransaction)
         rlLoading = findViewById(R.id.rlLoading)
         btnBack = findViewById(R.id.btnBack)
-//        btnBackFilter = findViewById(R.id.btnBackFilter)
         imgBox1 = findViewById(R.id.imgBox1)
         tvTextFilter = findViewById(R.id.tvTextFilter)
         imageBoxGray = findViewById(R.id.imageBoxGray)
@@ -105,6 +111,12 @@ class AccountDetailActivity : AppCompatActivity(){
         btn1Day = findViewById(R.id.btn1Day)
         btn1Month = findViewById(R.id.btn1Month)
         btn3Month = findViewById(R.id.btn3Month)
+        icTick1Day = findViewById(R.id.icTick1Day)
+        icTick1Month = findViewById(R.id.icTick1Month)
+        icTick3Month = findViewById(R.id.icTick3Month)
+        tv1Day = findViewById(R.id.tv1Day)
+        tv1Month = findViewById(R.id.tv1Month)
+        tv3Month = findViewById(R.id.tv3Month)
     }
 
     private fun initialEvent() {
@@ -125,6 +137,7 @@ class AccountDetailActivity : AppCompatActivity(){
                 AnimationUtils.loadAnimation(applicationContext, R.anim.slide_out_right)
             filterView?.startAnimation(animSlideOut)
             filterView?.visibility = View.GONE
+            clearState()
         }
 
         tvStartDate?.setOnClickListener {
@@ -137,6 +150,7 @@ class AccountDetailActivity : AppCompatActivity(){
 
         btnReset?.setOnClickListener {
             resetFilter()
+            clearState()
         }
 
         btn1Day?.setOnClickListener {
@@ -158,6 +172,7 @@ class AccountDetailActivity : AppCompatActivity(){
             Handler().postDelayed( {
                 confirmFilter()
                 rlLoading?.visibility = View.GONE
+                clearState()
             }, 500)
 
         }
@@ -183,22 +198,25 @@ class AccountDetailActivity : AppCompatActivity(){
 
     private fun set1Day() {
         prevState = "1_DAY"
-        btn1Day?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
+        tv1Day?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
         btn1Day?.background = getDrawable(R.drawable.bg_btn_red_white)
+        icTick1Day?.visibility = View.VISIBLE
         tvStartDate?.text = getBefore1week(tvEndDate?.text.toString());
     }
 
     private fun set1Month() {
         prevState = "1_MONTH"
-        btn1Month?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
+        tv1Month?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
         btn1Month?.background = getDrawable(R.drawable.bg_btn_red_white)
+        icTick1Month?.visibility = View.VISIBLE
         tvStartDate?.text = getBefore1month(tvEndDate?.text.toString());
     }
 
     private fun set3Month() {
         prevState = "3_MONTH"
-        btn3Month?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
+        tv3Month?.setTextColor(ContextCompat.getColor(this, R.color.color_red_button_filter))
         btn3Month?.background = getDrawable(R.drawable.bg_btn_red_white)
+        icTick3Month?.visibility = View.VISIBLE
         tvStartDate?.text = getBefore3month(tvEndDate?.text.toString());
     }
 
@@ -207,9 +225,12 @@ class AccountDetailActivity : AppCompatActivity(){
         btn1Day?.background = getDrawable(R.drawable.bg_btn_gray_white)
         btn1Month?.background = getDrawable(R.drawable.bg_btn_gray_white)
         btn3Month?.background = getDrawable(R.drawable.bg_btn_gray_white)
-        btn1Day?.setTextColor(ContextCompat.getColor(this, R.color.color_dark_font_filter))
-        btn1Month?.setTextColor(ContextCompat.getColor(this, R.color.color_dark_font_filter))
-        btn3Month?.setTextColor(ContextCompat.getColor(this, R.color.color_dark_font_filter))
+        icTick1Day?.visibility = View.GONE
+        icTick1Month?.visibility = View.GONE
+        icTick3Month?.visibility = View.GONE
+        tv1Day?.setTextColor(ContextCompat.getColor(this, R.color.color_dark_font_filter))
+        tv1Month?.setTextColor(ContextCompat.getColor(this, R.color.color_dark_font_filter))
+        tv3Month?.setTextColor(ContextCompat.getColor(this, R.color.color_dark_font_filter))
     }
 
     private fun setRedFilter() {

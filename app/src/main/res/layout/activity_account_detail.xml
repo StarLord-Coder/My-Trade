@@ -62,7 +62,7 @@
                         android:layout_width="100dp"
                         android:layout_height="28.8dp"
                         android:layout_marginTop="76dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/img_account_detail_box_gray_2023"
                         android:adjustViewBounds="true"/>
@@ -324,35 +324,125 @@
                             android:layout_marginTop="10dp"
                             android:orientation="horizontal">
 
-                            <Button
+                            <LinearLayout
                                 android:id="@+id/btn1Day"
                                 android:layout_width="84dp"
                                 android:layout_height="31dp"
                                 android:layout_marginStart="10dp"
                                 android:background="@drawable/bg_btn_gray_white"
-                                android:text="@string/prev_1_day"
-                                android:textColor="@color/color_dark_font_filter"
-                                android:textSize="13sp" />
+                                android:gravity="center"
+                                android:orientation="horizontal">
 
-                            <Button
+                                <ImageView
+                                    android:id="@+id/icTick1Day"
+                                    android:layout_width="13dp"
+                                    android:layout_height="13dp"
+                                    android:layout_marginEnd="15dp"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_correct"
+                                    android:tint="@color/color_red_filter"
+                                    android:visibility="gone"/>
+
+                                <TextView
+                                    android:id="@+id/tv1Day"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/prev_1_day"
+                                    android:gravity="center_horizontal"
+                                    android:textColor="@color/color_dark_font_filter"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
                                 android:id="@+id/btn1Month"
                                 android:layout_width="84dp"
                                 android:layout_height="31dp"
                                 android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
                                 android:background="@drawable/bg_btn_gray_white"
-                                android:text="@string/prev_1_month"
-                                android:textColor="@color/color_dark_font_filter"
-                                android:textSize="13sp" />
+                                android:gravity="center"
+                                android:orientation="horizontal">
 
-                            <Button
+                                <ImageView
+                                    android:id="@+id/icTick1Month"
+                                    android:layout_width="13dp"
+                                    android:layout_height="13dp"
+                                    android:layout_marginEnd="15dp"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_correct"
+                                    android:tint="@color/color_red_filter"
+                                    android:visibility="gone"/>
+
+                                <TextView
+                                    android:id="@+id/tv1Month"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/prev_1_month"
+                                    android:gravity="center_horizontal"
+                                    android:textColor="@color/color_dark_font_filter"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
                                 android:id="@+id/btn3Month"
                                 android:layout_width="84dp"
                                 android:layout_height="31dp"
+                                android:layout_marginStart="10dp"
                                 android:background="@drawable/bg_btn_gray_white"
-                                android:text="@string/prev_3_month"
-                                android:textColor="@color/color_dark_font_filter"
-                                android:textSize="13sp" />
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/icTick3Month"
+                                    android:layout_width="13dp"
+                                    android:layout_height="13dp"
+                                    android:layout_marginEnd="15dp"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_correct"
+                                    android:tint="@color/color_red_filter"
+                                    android:visibility="gone"/>
+
+                                <TextView
+                                    android:id="@+id/tv3Month"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/prev_3_month"
+                                    android:gravity="center_horizontal"
+                                    android:textColor="@color/color_dark_font_filter"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+<!--                            <Button-->
+<!--                                android:id="@+id/btn1Day"-->
+<!--                                android:layout_width="84dp"-->
+<!--                                android:layout_height="31dp"-->
+<!--                                android:layout_marginStart="10dp"-->
+<!--                                android:background="@drawable/bg_btn_gray_white"-->
+<!--                                android:text="@string/prev_1_day"-->
+<!--                                android:textColor="@color/color_dark_font_filter"-->
+<!--                                android:textSize="13sp" />-->
+
+<!--                            <Button-->
+<!--                                android:id="@+id/btn1Month"-->
+<!--                                android:layout_width="84dp"-->
+<!--                                android:layout_height="31dp"-->
+<!--                                android:layout_marginStart="10dp"-->
+<!--                                android:layout_marginEnd="10dp"-->
+<!--                                android:background="@drawable/bg_btn_gray_white"-->
+<!--                                android:text="@string/prev_1_month"-->
+<!--                                android:textColor="@color/color_dark_font_filter"-->
+<!--                                android:textSize="13sp" />-->
+
+<!--                            <Button-->
+<!--                                android:id="@+id/btn3Month"-->
+<!--                                android:layout_width="84dp"-->
+<!--                                android:layout_height="31dp"-->
+<!--                                android:background="@drawable/bg_btn_gray_white"-->
+<!--                                android:text="@string/prev_3_month"-->
+<!--                                android:textColor="@color/color_dark_font_filter"-->
+<!--                                android:textSize="13sp" />-->
                         </LinearLayout>
 
                         <View
