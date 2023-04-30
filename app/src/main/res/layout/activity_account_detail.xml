@@ -57,6 +57,15 @@
                         android:adjustViewBounds="true"
                         android:src="@drawable/img_account_detail_box_1_2023" />
 
+                    <ImageView
+                        android:id="@+id/imageBoxGray"
+                        android:layout_width="100dp"
+                        android:layout_height="28.8dp"
+                        android:layout_marginTop="76dp"
+                        android:layout_marginLeft="10dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img_account_detail_box_gray_2023"
+                        android:adjustViewBounds="true"/>
 
                     <!-- AC1 -->
                     <LinearLayout
@@ -142,16 +151,6 @@
 <!--                            android:adjustViewBounds="true"/>-->
 <!--                    </LinearLayout>-->
 
-
-
-<!--                    <Button-->
-<!--                        android:id="@+id/btnFilter"-->
-<!--                        android:layout_width="80dp"-->
-<!--                        android:layout_height="40dp"-->
-<!--                        android:layout_alignParentEnd="true"-->
-<!--                        android:layout_alignParentBottom="true"-->
-<!--                        android:layout_marginEnd="10dp"-->
-<!--                        android:background="@android:color/transparent" />-->
 
                     <!-- #E4E6EA -->
                     <LinearLayout

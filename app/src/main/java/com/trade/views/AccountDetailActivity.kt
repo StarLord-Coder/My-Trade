@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.trade.R
 import com.trade.adapter.TransactionAdapter
 import com.trade.utils.*
+import kotlinx.android.synthetic.main.activity_account_detail.*
 import java.lang.ref.WeakReference
 import java.text.SimpleDateFormat
 import java.util.*
@@ -41,6 +42,7 @@ class AccountDetailActivity : AppCompatActivity(){
     private var imgBox1: ImageView? = null
     private var icFilter: ImageView? = null
     private var tvTextFilter: TextView? = null
+    private var imageBoxGray: ImageView? = null
     val c = Calendar.getInstance()
     var transactionAdapter: TransactionAdapter? = null
     var transactionList = ArrayList<Transaction>()
@@ -98,6 +100,7 @@ class AccountDetailActivity : AppCompatActivity(){
 //        btnBackFilter = findViewById(R.id.btnBackFilter)
         imgBox1 = findViewById(R.id.imgBox1)
         tvTextFilter = findViewById(R.id.tvTextFilter)
+        imageBoxGray = findViewById(R.id.imageBoxGray)
         icFilter = findViewById(R.id.icFilter)
         btn1Day = findViewById(R.id.btn1Day)
         btn1Month = findViewById(R.id.btn1Month)
@@ -105,6 +108,7 @@ class AccountDetailActivity : AppCompatActivity(){
     }
 
     private fun initialEvent() {
+        imageBoxGray?.visibility = View.GONE
         llFilter?.setOnClickListener {
             setRedFilter()
             filterView?.visibility = View.VISIBLE
@@ -290,6 +294,7 @@ class AccountDetailActivity : AppCompatActivity(){
     }
 
     private fun confirmFilter() {
+
         if (!tvEndDate?.text.toString().isNullOrEmpty() && !tvStartDate?.text.toString().isNullOrEmpty()) {
             endDate = tvEndDate?.text.toString()
             startDate = tvStartDate?.text.toString()
@@ -307,6 +312,8 @@ class AccountDetailActivity : AppCompatActivity(){
 //            imgBox1?.setImageDrawable(resources.getDrawable(R.drawable.img_account_detail_box_1, null))
             filterView?.visibility = View.GONE
         }
+        imageBoxGray?.visibility = View.VISIBLE
+        isShowFilter = false
     }
 
     private fun searchData(start: String, end: String) {

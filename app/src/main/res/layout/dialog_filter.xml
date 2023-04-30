@@ -84,7 +84,7 @@
                     android:layout_marginStart="12dp"
                     android:background="@drawable/bg_btn_gray_white"
                     android:text="近1周"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"/>
 
                 <Button
                     android:layout_width="80dp"
@@ -167,7 +167,7 @@
 
                 <ImageView
                     android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_height="10dp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_correct"
                     android:tint="@android:color/holo_red_dark" />

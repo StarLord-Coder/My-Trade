@@ -13,6 +13,8 @@ class ReadData {
         lateinit var jsonString: String
         try {
             jsonString = context.assets.open("act_c1.json")
+//            jsonString = context.assets.open("act_c2.json")
+//            jsonString = context.assets.open("act_c3.json")
                 .bufferedReader()
                 .use { it.readText() }
 
