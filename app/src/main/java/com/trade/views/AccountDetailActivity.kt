@@ -137,7 +137,7 @@ class AccountDetailActivity : AppCompatActivity(){
                 AnimationUtils.loadAnimation(applicationContext, R.anim.slide_out_right)
             filterView?.startAnimation(animSlideOut)
             filterView?.visibility = View.GONE
-            clearState()
+//            clearState()
         }
 
         tvStartDate?.setOnClickListener {
@@ -172,7 +172,7 @@ class AccountDetailActivity : AppCompatActivity(){
             Handler().postDelayed( {
                 confirmFilter()
                 rlLoading?.visibility = View.GONE
-                clearState()
+//                clearState()
             }, 500)
 
         }
