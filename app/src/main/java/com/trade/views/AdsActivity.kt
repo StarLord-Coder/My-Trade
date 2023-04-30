@@ -23,13 +23,14 @@ class AdsActivity : AppCompatActivity() {
 
     private fun initialEvent() {
         tvCountdown.setOnClickListener {
-            if (!isPauseTimer) {
-                isPauseTimer = true
-                pauseTimer()
-            } else {
-                isPauseTimer = false
-                resumeTimer()
-            }
+            toFirstScreen()
+//            if (!isPauseTimer) {
+//                isPauseTimer = true
+//                pauseTimer()
+//            } else {
+//                isPauseTimer = false
+//                resumeTimer()
+//            }
         }
     }
 
