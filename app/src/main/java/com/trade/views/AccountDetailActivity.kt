@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.trade.R
 import com.trade.adapter.TransactionAdapter
 import com.trade.utils.*
-import kotlinx.android.synthetic.main.activity_account_detail.*
 import java.lang.ref.WeakReference
 import java.text.SimpleDateFormat
 import java.util.*
@@ -42,8 +41,10 @@ class AccountDetailActivity : AppCompatActivity(){
     private var tv1Month: TextView? = null
     private var tv3Month: TextView? = null
 
-     var startDate: String? = ""
-     var endDate: String? = ""
+    var startDateDefault: String? = ""
+    var endDateDefault: String? = ""
+    var startDate: String? = ""
+    var endDate: String? = ""
     private var btnBack: Button? = null
 //    private var btnBackFilter: Button? = null
     private var imgBox1: ImageView? = null
@@ -54,6 +55,7 @@ class AccountDetailActivity : AppCompatActivity(){
     var transactionAdapter: TransactionAdapter? = null
     var transactionList = ArrayList<Transaction>()
     private var isShowFilter = false
+    private var isPressConfirm = false
 
     private var btn1Day: LinearLayout? = null
     private var btn1Month: LinearLayout? = null
@@ -80,6 +82,8 @@ class AccountDetailActivity : AppCompatActivity(){
         rlLoading?.visibility = View.VISIBLE
         Handler().postDelayed( {
             getTransactionData()
+            startDateDefault = getBefore6monthNonTime()
+            endDateDefault = getCurrentDate()
         }, 2000)
 //
 //        handler.postDelayed(r, 1000)
@@ -132,6 +136,9 @@ class AccountDetailActivity : AppCompatActivity(){
 
         btnCancel?.setOnClickListener {
             isShowFilter = false
+
+            if (!isPressConfirm)
+                clearState()
 //            filterView?.visibility = View.GONE
             val animSlideOut: Animation =
                 AnimationUtils.loadAnimation(applicationContext, R.anim.slide_out_right)
@@ -169,6 +176,7 @@ class AccountDetailActivity : AppCompatActivity(){
         }
         btnConfirm?.setOnClickListener {
             rlLoading?.visibility = View.VISIBLE
+            isPressConfirm = true
             Handler().postDelayed( {
                 confirmFilter()
                 rlLoading?.visibility = View.GONE
@@ -185,14 +193,17 @@ class AccountDetailActivity : AppCompatActivity(){
             if (isShowFilter) {
                 isShowFilter = false
 
+                if (!isPressConfirm)
+                    clearState()
+
                 val animSlideOut: Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.slide_out_right)
                 filterView?.startAnimation(animSlideOut)
                 filterView?.visibility = View.GONE
+
             } else {
                 finish()
                 overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left)
             }
-
         }
     }
 
@@ -310,8 +321,8 @@ class AccountDetailActivity : AppCompatActivity(){
     }
 
     private fun resetFilter() {
-        tvEndDate?.text = ""
-        tvStartDate?.text = ""
+        tvEndDate?.text = endDateDefault
+        tvStartDate?.text = startDateDefault
     }
 
     private fun confirmFilter() {
@@ -369,6 +380,13 @@ class AccountDetailActivity : AppCompatActivity(){
         return sdf.format(currentDate.time)
     }
 
+    private fun getCurrentDate(): String {
+        val currentDate = Calendar.getInstance().time
+        val myFormat = "yyyy-MM-dd"
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        return sdf.format(currentDate.time)
+    }
+
     private fun getBefore1week(endDate: String): String {
         val myFormat = "yyyy/MM/dd"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
@@ -400,8 +418,7 @@ class AccountDetailActivity : AppCompatActivity(){
         cal.add(Calendar.MONTH, -3)
         cal.add(Calendar.DATE, +1)
         val d = cal.time
-        val res: String = sdf.format(d.time)
-        return res
+        return sdf.format(d.time)
     }
 
     private fun getBefore6month(): String {
@@ -412,8 +429,18 @@ class AccountDetailActivity : AppCompatActivity(){
         cal.add(Calendar.MONTH, -6)
         cal.add(Calendar.DATE, +1)
         val d = cal.time
-        val res: String = sdf.format(d.time)
-        return res
+        return sdf.format(d.time)
+    }
+
+    private fun getBefore6monthNonTime(): String {
+        val myFormat = "yyyy-MM-dd"
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        val cal = Calendar.getInstance()
+        cal.time = Date()
+        cal.add(Calendar.MONTH, -6)
+        cal.add(Calendar.DATE, +1)
+        val d = cal.time
+        return sdf.format(d.time)
     }
 
     private fun convertToDMY(strDate: String): String {
